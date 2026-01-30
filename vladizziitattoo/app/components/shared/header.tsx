@@ -65,7 +65,7 @@ export const Header: React.FC<Props> = ({ className }) => {
                 href="#register"
                 className="border-[#2a2a2a] bg-[#1212127f] w-[10rem] rounded-3xl border-[1px] px-4 py-2 hover:border-[#4b4b4b] duration-300"
               >
-                <span className="flex items-center gap-1 shown-text-btn">
+                <span className="flex items-center justify-center gap-1 shown-text-btn">
                   <svg
                     width="24"
                     height="24"
