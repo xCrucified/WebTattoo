@@ -233,7 +233,7 @@ h-[100%]
                       </li>
 
                       {/* Btn Check In */}
-                      <li className="mt-4 self-start">
+                      <li className="self-start w-[14rem]">
                         <a
                           href="#register"
                           onClick={() => setIsOpen(false)}
