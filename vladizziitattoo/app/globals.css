@@ -12,13 +12,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
@@ -68,4 +61,24 @@ header {
   color: white;
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.582));
   transition: all 0.3s ease-out; 
+}
+
+@keyframes slide-down {
+ from { 
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 0;
+  }
+  to { 
+    transform: scaleY(0.99);
+    transform-origin: top;
+    opacity: 1;
+  }
+}
+
+.slide-bottom {
+  animation: both 0.5s slide-bottom;
+	-webkit-animation: slide-bottom 0.5s both;
+	        animation: slide-bottom 0.5s both;
+
 }
