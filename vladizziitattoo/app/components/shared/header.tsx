@@ -1,4 +1,5 @@
-"use client";
+'use client';
+
 import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import Image from "next/image";
@@ -9,24 +10,23 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ className }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
     const handleResize = () => {
-      // window.innerWidth проверяет реальную ширину окна в пикселях
-      if (window.innerWidth >= 1280) {
+      if (window.innerWidth >= 1280/* px */) {
         setIsOpen(false);
       }
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [isOpen]);
+  }, [isOpen, setIsOpen]);
 
   return (
     <header
       className={cn(className, "w-[100%] shadow-md h-[100px] bg-[#0000005c]")}
     >
-      <div className="flex items-center justify-between mx-auto h-full w-[90%]">
+      <div className="flex items-center justify-between mx-auto h-full w-[95%]">
         <a
           href="#home"
           className="flex items-center space-x-3 nav-item w-full h-full"
@@ -37,7 +37,7 @@ export const Header: React.FC<Props> = ({ className }) => {
             className="text-logo"
             width={45}
             height={45}
-          ></Image>
+          />
           <h1 className="text-2xl font-bold text-logo">Vladizzii Tattoo</h1>
         </a>
 
