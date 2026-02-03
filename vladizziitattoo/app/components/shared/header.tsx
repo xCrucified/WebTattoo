@@ -14,7 +14,7 @@ interface Props {
 export const Header: React.FC<Props> = ({ className }) => {
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "unset";
+
     const handleResize = () => {
       if (window.innerWidth >= 1280 /* px */) {
         setIsOpen(false);
@@ -26,22 +26,21 @@ export const Header: React.FC<Props> = ({ className }) => {
 
   return (
     <header
-      className={cn(className, "w-[100%] shadow-md h-[100px] bg-[#0000005c]")}
+      className={cn(className, "w-[100%] shadow-md h-[100px] bg-[#0000005c] blur_drop_down")}
     >
-      <div className="flex items-center justify-between mx-auto h-full w-[95%]">
-        <a
-          href="#home"
-          className="flex items-center space-x-3 nav-item w-full h-full"
-        >
-          <Image
-            src="/header_img/rose.svg"
-            alt="Vladizzi Tattoo Logo"
-            className="text-logo"
-            width={45}
-            height={45}
-          />
-          <h1 className="text-2xl font-bold text-logo">Vladizzii Tattoo</h1>
-        </a>
+      <div className="flex items-center justify-around mx-auto h-full w-[95%]">
+        <div className="flex items-center space-x-3 w-full h-full">
+          <a href="#home" className="flex items-center nav-item  h-full">
+            <Image
+              src="/header_img/rose.svg"
+              alt="Vladizzi Tattoo Logo"
+              className="text-logo"
+              width={45}
+              height={45}
+            />
+            <h1 className="text-2xl font-bold text-logo">Vladizzii Tattoo</h1>
+          </a>
+        </div>
 
         {
           <nav
@@ -52,7 +51,7 @@ absolute
 left-0 w-full 
 bg-[#121212] 
 flex-col lg:flex-row 
-text-[#acacad] text-xl z-40
+ text-xl z-40
 h-[100%] 
 `}
           >
@@ -132,11 +131,11 @@ h-[100%]
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "34%", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="fixed inset-0 z-50 mt-[6rem] flex flex-col items-center justify-start bg-black text-white xl:hidden overflow-hidden"
+              initial={{ y: "-100%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: "-100%", opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="fixed top-0 left-0 w-full z-50 bg-black xl:hidden blur_drop_down"
             >
               <div
                 className={`
@@ -145,7 +144,7 @@ h-[100%]
     ${isOpen ? "grid-rows-[1fr] opacity-100 visible" : "grid-rows-[0fr] opacity-0 invisible"}
   `}
               >
-                <div className="overflow-hidden">
+                <div className="">
                   <nav className="flex flex-col items-center py-8 w-full">
                     <ul className="flex flex-col items-center gap-6 w-full text-2xl font-medium ml-18">
                       {/* Home */}
