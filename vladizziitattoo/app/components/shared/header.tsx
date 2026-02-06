@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -26,7 +26,7 @@ export const Header: React.FC<Props> = ({ className }) => {
 
   return (
     <header
-      className={cn(className, "w-[100%] shadow-md h-[100px] bg-[#0000005c] blur_drop_down")}
+      className={cn(className, "w-[100%] shadow-md h-[100px]", isOpen ? "bg-black" : "blur_drop_down",)}
     >
       <div className="flex items-center justify-around mx-auto h-full w-[95%]">
         <div className="flex items-center space-x-3 w-full h-full">

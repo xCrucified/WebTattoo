@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import React, { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   className?: string;
@@ -56,14 +57,30 @@ export const Footer: React.FC<Props> = ({ className }) => {
               Available For Work
             </p>
           </div>
-          <div className="text-5xl w-[70rem] text-center">
+          <div className="text-5xl max-w-[60%] text-center">
             Curious about what we can create together? Let’s bring something
             extraordinary to life!
           </div>
-          <Button className="ring-1 ring-white/10  hover:border-y-2  border-white/30 rounded-3xl hover:border-white/20 duration-160 p-5 h-[65px] w-[260px] text-lg" 
-                  onClick={() => (window.location.href = "/booking")}>
-            <p>Make an appointment</p>
+          <Button
+            onClick={() => (window.location.href = "/booking")}
+            className="
+    relative
+    flex items-center justify-center
+    h-[65px] w-[260px]
+    rounded-3xl
+  text-white text-lg font-medium
+    ring-1 ring-white/10
+
+    transition-all duration-200 ease-in-out
+    hover:ring-white/25
+    hover:scale-[1.02]
+    hover:bg-gradient-to-r hover:from-neutral-900 hover:to-black
+    active:scale-[0.98]
+  "
+          >
+            Make an appointment
           </Button>
+
           <div className="flex items-center gap-5">
             <a href="https://www.instagram.com/vladizzii.tattoo?igsh=ZmUwaWp6MzYxbm51">
               <Image
@@ -94,15 +111,21 @@ export const Footer: React.FC<Props> = ({ className }) => {
           </div>
         </div>
         <div className="grid grid-cols-3 col-start-1 w-full items-center justify-around  text-white text-center">
-          <div className="" ref={ref}>
-            Privacy Policy | Terms of Service
+          <div>
+            <Link href="/privacy-policy">Privacy Policy</Link> |{" "}
+            <Link href="/terms-of-service">Terms of Service</Link>
           </div>
-          <div className="" ref={ref}>
-            Design By StarBoi inc.
+          <div>
+            Designed by{" "}
+            <a
+              href="https://your-portfolio.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              xCrucified
+            </a>
           </div>
-          <div className="">
-            All rights reserved, Vladizzii Tattoo © 2026
-          </div>
+          <div>All rights reserved, <a href="">Vladizzii Tattoo</a> © 2026</div>
         </div>
       </div>
     </footer>
