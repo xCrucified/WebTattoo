@@ -30,7 +30,7 @@ export const Header: React.FC<Props> = ({ className }) => {
     >
       <div className="flex items-center justify-around mx-auto h-full w-[95%]">
         <div className="flex items-center space-x-3 w-full h-full">
-          <a href="#home" className="flex items-center nav-item  h-full">
+          <a href="." className="flex items-center nav-item  h-full">
             <Image
               src="/header_img/rose.svg"
               alt="Vladizzi Tattoo Logo"
