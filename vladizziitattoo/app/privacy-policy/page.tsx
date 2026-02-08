@@ -1,21 +1,20 @@
-'use client';
+"use client";
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
-
+import { Button } from "../components/ui/button";
+import Image from "next/image";
 interface Props {
   className?: string;
 }
 
 export const PrivacyPolicy: React.FC<Props> = ({ className }) => {
-  const [isSmall, isSmallWindow] = useState(false)
+  const [isSmall, setIsSmall] = React.useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      isSmallWindow(window.innerWidth <= 640);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+  React.useEffect(() => {
+    const checkSize = () => setIsSmall(window.innerWidth < 920);
+    checkSize();
+    window.addEventListener("resize", checkSize);
+    return () => window.removeEventListener("resize", checkSize);
   }, []);
 
   const text = `We respect your privacy. Any personal information you provide through
@@ -37,14 +36,41 @@ export const PrivacyPolicy: React.FC<Props> = ({ className }) => {
   const sentences = text.split(".").filter((s) => s.trim() !== "");
 
   return (
-    <div className={cn(className, "flex mt-80 gap-5 w-full h-full")}>
-      {isSmall && ( <hr className="ml-6 h-[41rem] border-0 border-l border-white/30" />)}
-      <div className="flex flex-col gap-10 sm:mx-auto sm:w-[50%] w-[70%] text-pretty sm:text-center">
-        <h1 className="sm:text-5xl text-4xl font-light">Privacy Policy</h1>
-        <div className="sm:text-xl text-pretty text-gray-400 space-y-2">
-          {sentences.map((sentence, index) => (
-            <p key={index}>{sentence.trim()}.</p>
-          ))}
+    <div className={cn(className, "flex mt-50 gap-5 w-full h-full")}>
+      <Button className="absolute left-[4%]" onClick={() => (location.href = ".")}><Image src={"/icons/left.svg"} alt={""} width={24} height={24}></Image></Button>
+      <div
+        className={cn(
+          "flex flex-col gap-10 mx-auto w-[70%] text-pretty",
+          !isSmall && "text-center",
+        )}
+      >
+        <div className={isSmall ? "flex items-center gap-4 justify-start" : `flex gap-4 justify-center items-center mt-40`}>
+          <div
+            className="
+              w-3 h-3 rounded-full bg-white animate-glow
+              shadow-[0_0_10px_rgba(255,255,255,0.9)]
+              "
+          />
+          <h1 className={`${!isSmall && "text-5xl"} text-4xl font-light`}>
+            Privacy Policy
+          </h1>
+        </div>
+
+        {!isSmall && <hr className="w-full border-white/30" />}
+
+        <div className="flex gap-5">
+          {isSmall && <div className="w-px bg-white/30 self-stretch" />}
+
+          <div
+            className={cn(
+              "text-pretty text-gray-400 space-y-2",
+              isSmall && "text-lg",
+            )}
+          >
+            {sentences.map((sentence, index) => (
+              <p key={index}>{sentence.trim()}.</p>
+            ))}
+          </div>
         </div>
       </div>
     </div>
