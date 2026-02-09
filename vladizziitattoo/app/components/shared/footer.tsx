@@ -9,6 +9,41 @@ interface Props {
   className?: string;
 }
 
+interface Routes {
+  id: number;
+  img: string;
+  alt: string;
+  link: string;
+  width: number;
+  height: number;
+}
+const route: Routes[] = [
+  {
+    id: 0,
+    img: "/footer_img/instagram.svg",
+    alt: "instagram image",
+    link: "https://www.instagram.com/vladizzii.tattoo?igsh=ZmUwaWp6MzYxbm51",
+    width: 25,
+    height: 25,
+  },
+  {
+    id: 1,
+    img: "/footer_img/facebook.svg",
+    alt: "facebook image",
+    link: "https://www.facebook.com/share/1F3oGWSjBF/?mibextid=wwXIfr",
+    width: 25,
+    height: 25,
+  },
+  {
+    id: 2,
+    img: "/footer_img/tiktok.svg",
+    alt: "tiktok image",
+    link: "https://www.tiktok.com/@vladizzii.tattoo?_r=1&_t=ZN-93ccDy1o2aM",
+    width: 25,
+    height: 25,
+  },
+];
+
 export const Footer: React.FC<Props> = ({ className }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
@@ -82,32 +117,22 @@ export const Footer: React.FC<Props> = ({ className }) => {
           </Button>
 
           <div className="flex items-center gap-5">
-            <a href="https://www.instagram.com/vladizzii.tattoo?igsh=ZmUwaWp6MzYxbm51">
-              <Image
-                src="/footer_img/instagram.svg"
-                alt="instagram image"
-                width={25}
-                height={25}
-              />
-            </a>
-            <hr className="h-6 border-0 border-l border-white/30" />
-            <a href="https://www.facebook.com/share/1F3oGWSjBF/?mibextid=wwXIfr">
-              <Image
-                src="/footer_img/facebook.svg"
-                alt="facebook image"
-                width={25}
-                height={25}
-              />
-            </a>
-            <hr className="h-6 border-0 border-l border-white/30" />
-            <a href="https://www.tiktok.com/@vladizzii.tattoo?_r=1&_t=ZN-93ccDy1o2aM">
-              <Image
-                src="/footer_img/tiktok.svg"
-                alt="tiktok image"
-                width={25}
-                height={25}
-              />
-            </a>
+            {route.map((x, index) => (
+              <div className="flex gap-5 items-center" key={x.id}>
+                <a href={x.link}>
+                  <Image
+                    src={x.img}
+                    alt={x.alt}
+                    width={x.width}
+                    height={x.height}
+                  />
+                </a>
+
+                {index !== route.length - 1 && (
+                  <hr className="h-6 border-0 border-l border-white/30" />
+                )}
+              </div>
+            ))}
           </div>
         </div>
         <div className="grid grid-cols-3 col-start-1 w-full items-center justify-around  text-white text-center">
@@ -125,7 +150,9 @@ export const Footer: React.FC<Props> = ({ className }) => {
               xCrucified
             </a>
           </div>
-          <div>All rights reserved, <a href="">Vladizzii Tattoo</a> © 2026</div>
+          <div>
+            All rights reserved, <a href=".">Vladizzii Tattoo</a> © 2026
+          </div>
         </div>
       </div>
     </footer>

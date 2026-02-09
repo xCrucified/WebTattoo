@@ -10,11 +10,33 @@ import FallingStarSVG from "@/app/misc/falling-star_svg";
 interface Props {
   className?: string;
 }
+interface Routes {
+  name: string;
+  path: string;
+}
+
+const route: Routes[] = [
+  {
+    name: "Home",
+    path: ".",
+  },
+  {
+    name: "Gallery",
+    path: "#gallery",
+  },
+  {
+    name: "About",
+    path: "#about",
+  },
+  {
+    name: "Testimonials",
+    path: "#testimonials",
+  },
+];
 
 export const Header: React.FC<Props> = ({ className }) => {
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
-
     const handleResize = () => {
       if (window.innerWidth >= 1280 /* px */) {
         setIsOpen(false);
@@ -26,7 +48,11 @@ export const Header: React.FC<Props> = ({ className }) => {
 
   return (
     <header
-      className={cn(className, "w-[100%] shadow-md h-[100px]", isOpen ? "bg-black" : "blur_drop_down",)}
+      className={cn(
+        className,
+        "w-[100%] shadow-md h-[100px]",
+        isOpen ? "bg-black" : "blur_drop_down",
+      )}
     >
       <div className="flex items-center justify-around mx-auto h-full w-[95%]">
         <div className="flex items-center space-x-3 w-full h-full">
@@ -56,41 +82,20 @@ h-[100%]
 `}
           >
             <ul className="flex justify-around w-full h-full">
-              <li className="flex-1 flex w-32 flex-shrink-0 text-center nav-item">
-                <a
-                  href="#home"
-                  className="flex items-center justify-center w-full h-ful"
+              {route.map((x) => (
+                <li
+                  className="flex-1 flex w-32 flex-shrink-0 text-center nav-item"
+                  key={x.path}
                 >
-                  <p>Home</p>
-                </a>
-              </li>
+                  <a
+                    className="flex items-center justify-center w-full h-full"
+                    href={x.path}
+                  >
+                    <p className="text-lg">{x.name}</p>
+                  </a>
+                </li>
+              ))}
 
-              <li className="flex-1 flex w-32 flex-shrink-0 text-center nav-item">
-                <a
-                  href="#gallery"
-                  className="flex items-center justify-center w-[100%] h-[100%]"
-                >
-                  <p>Gallery</p>
-                </a>
-              </li>
-
-              <li className="flex-1 flex w-32 flex-shrink-0 text-center nav-item">
-                <a
-                  href="#about"
-                  className="flex items-center justify-center w-full h-full"
-                >
-                  <p>About</p>
-                </a>
-              </li>
-
-              <li className="flex-1 flex w-32 flex-shrink-0 text-center nav-item">
-                <a
-                  href="#review"
-                  className="flex items-center justify-center w-full h-full"
-                >
-                  Testimonials
-                </a>
-              </li>
               <li className="flex flex-1 items-center justify-center ml-5">
                 <a
                   href="#register"
@@ -148,48 +153,17 @@ h-[100%]
                   <nav className="flex flex-col items-center py-8 w-full">
                     <ul className="flex flex-col items-center gap-6 w-full text-2xl font-medium ml-18">
                       {/* Home */}
-                      <li className="w-full">
-                        <a
-                          href="#home"
-                          className="block py-3 hover:text-gray-400 transition-colors"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          Home
-                        </a>
-                      </li>
-
-                      {/* Gallery */}
-                      <li className="w-full">
-                        <a
-                          href="#gallery"
-                          className="block py-3 hover:text-gray-400 transition-colors"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          Gallery
-                        </a>
-                      </li>
-
-                      {/* About */}
-                      <li className="w-full">
-                        <a
-                          href="#about"
-                          className="block py-3 hover:text-gray-400 transition-colors"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          About
-                        </a>
-                      </li>
-
-                      {/* Testimonials */}
-                      <li className="w-full">
-                        <a
-                          href="#review"
-                          className="block py-3 hover:text-gray-400 transition-colors"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          Testimonials
-                        </a>
-                      </li>
+                      {route.map((x) => (
+                        <li className="w-full" key={x.path}>
+                          <a
+                            className="block py-3 hover:text-gray-400 transition-colors"
+                            href={x.path}
+                            onClick={() => setIsOpen(false)}
+                          >
+                            <p className="text-lg">{x.name}</p>
+                          </a>
+                        </li>
+                      ))}
 
                       {/* Btn Check In */}
                       <li className="self-start w-[14rem]">
