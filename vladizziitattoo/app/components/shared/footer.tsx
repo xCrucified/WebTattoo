@@ -141,7 +141,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
             <Link href="/terms-of-service">Terms of Service</Link>
           </div>
           <div>
-            Designed by{" "}
+            Designed and developed by{" "}
             <a
               href="https://your-portfolio.com"
               target="_blank"
