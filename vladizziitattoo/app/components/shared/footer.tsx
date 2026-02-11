@@ -46,7 +46,7 @@ const route: Routes[] = [
 
 export const Footer: React.FC<Props> = ({ className }) => {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [size, setSize] = useState({ width: 0, height: 0 });
+  const [, setSize] = useState({ width: 0, height: 0 });
   useEffect(() => {
     if (!ref.current) return;
 
@@ -92,7 +92,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
               Available For Work
             </p>
           </div>
-          <div className="text-5xl max-w-[60%] text-center">
+          <div className="text-5xl text-center">
             Curious about what we can create together? Let’s bring something
             extraordinary to life!
           </div>
@@ -116,7 +116,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
             Make an appointment
           </Button>
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-5 mb-10">
             {route.map((x, index) => (
               <div className="flex gap-5 items-center" key={x.id}>
                 <a href={x.link}>
@@ -135,13 +135,12 @@ export const Footer: React.FC<Props> = ({ className }) => {
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-3 col-start-1 w-full items-center justify-around  text-white text-center">
+        <div className="flex w-full items-center justify-center space-x-[5%] text-white text-center">
           <div>
-            <Link href="/privacy-policy">Privacy Policy</Link> |{" "}
-            <Link href="/terms-of-service">Terms of Service</Link>
+            <Link href="/privacy-policy">Privacy Policy</Link>
           </div>
           <div>
-            Designed and developed by{" "}
+            Developed by{" "}
             <a
               href="https://your-portfolio.com"
               target="_blank"
@@ -151,7 +150,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
             </a>
           </div>
           <div>
-            All rights reserved, <a href=".">Vladizzii Tattoo</a> © 2026
+            <a href="_blank">All rights reserved </a> © 2026
           </div>
         </div>
       </div>

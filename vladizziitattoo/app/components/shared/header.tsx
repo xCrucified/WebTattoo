@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -54,9 +54,9 @@ export const Header: React.FC<Props> = ({ className }) => {
         isOpen ? "bg-black" : "blur_drop_down",
       )}
     >
-      <div className="flex items-center justify-around mx-auto h-full w-[95%]">
+      <div className="flex items-center justify-around mx-auto h-full w-[90%]">
         <div className="flex items-center space-x-3 w-full h-full">
-          <a href="." className="flex items-center nav-item  h-full">
+          <a href="." className="flex items-center nav-item space-x-1 h-full">
             <Image
               src="/header_img/rose.svg"
               alt="Vladizzi Tattoo Logo"
@@ -76,7 +76,7 @@ xl:flex xl:relative xl:display-none hidden xl:bg-transparent
 absolute 
 left-0 w-full 
 bg-[#121212] 
-flex-col lg:flex-row 
+flex-col lg:flex-row
  text-xl z-40
 h-[100%] 
 `}

@@ -37,14 +37,14 @@ export const PrivacyPolicy: React.FC<Props> = ({ className }) => {
 
   return (
     <div className={cn(className, "flex mt-50 gap-5 w-full h-full")}>
-      <Button className="absolute left-[4%]" onClick={() => (location.href = ".")}><Image src={"/icons/left.svg"} alt={""} width={24} height={24}></Image></Button>
+      <Button className="absolute left-[5%]" onClick={() => (location.href = ".")}><Image src={"/icons/left.svg"} alt={""} width={24} height={24}></Image></Button>
       <div
         className={cn(
-          "flex flex-col gap-10 mx-auto w-[70%] text-pretty",
+          "flex flex-col gap-10 mx-auto w-[70%] text-pretty ",
           !isSmall && "text-center",
         )}
       >
-        <div className={isSmall ? "flex items-center gap-4 justify-start" : `flex gap-4 justify-center items-center mt-40`}>
+        <div className={isSmall ? "flex items-center gap-4 justify-start" : `flex gap-4 justify-center items-center space-x-2 mt-40`}>
           <div
             className="
               w-3 h-3 rounded-full bg-white animate-glow
@@ -63,12 +63,12 @@ export const PrivacyPolicy: React.FC<Props> = ({ className }) => {
 
           <div
             className={cn(
-              "text-pretty text-gray-400 space-y-2",
+              "text-pretty text-gray-400 space-y-2 ",
               isSmall && "text-lg",
             )}
           >
             {sentences.map((sentence, index) => (
-              <p key={index}>{sentence.trim()}.</p>
+              <p className="shimmer-text" key={index}>{sentence.trim()}.</p>
             ))}
           </div>
         </div>
