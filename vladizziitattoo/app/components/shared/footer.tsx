@@ -92,7 +92,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
               Available For Work
             </p>
           </div>
-          <div className="text-5xl text-center">
+          <div className="text-5xl text-center shimmer-text">
             Curious about what we can create together? Let’s bring something
             extraordinary to life!
           </div>
@@ -135,7 +135,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-3 w-full items-center text-white text-center">
+        <div className="grid grid-cols-3 w-full items-center text-white/70 text-center">
           <div>
             <Link href="/privacy-policy">Privacy Policy</Link>
           </div>

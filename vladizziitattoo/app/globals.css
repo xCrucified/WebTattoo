@@ -109,7 +109,7 @@ header {
 
 .shimmer-text {
   background: linear-gradient(
-    to right,
+    to left,
     #acacad 20%,
     #ffffff 30%,
     #ffffff 50%,
