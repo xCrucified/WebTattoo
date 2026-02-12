@@ -37,7 +37,7 @@ export const PrivacyPolicy: React.FC<Props> = ({ className }) => {
 
   return (
     <div className={cn(className, "flex mt-25 gap-5 w-full h-full")}>
-      <Button className="absolute left-[5%]" onClick={() => (location.href = ".")}><Image src={"/icons/left.svg"} alt={""} width={24} height={24}></Image></Button>
+      <Button className="absolute left-[4%]" onClick={() => (location.href = ".")}><Image src={"/icons/left.svg"} alt={""} width={24} height={24}></Image></Button>
       <div
         className={cn(
           "flex flex-col gap-10 mx-auto w-[70%] text-pretty ",
