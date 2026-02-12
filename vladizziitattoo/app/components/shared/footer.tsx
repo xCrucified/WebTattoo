@@ -135,7 +135,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
             ))}
           </div>
         </div>
-        <div className="flex w-full items-center justify-center space-x-[5%] text-white text-center">
+        <div className="grid grid-cols-3 w-full items-center text-white text-center">
           <div>
             <Link href="/privacy-policy">Privacy Policy</Link>
           </div>
