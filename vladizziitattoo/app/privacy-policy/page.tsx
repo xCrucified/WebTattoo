@@ -36,7 +36,7 @@ export const PrivacyPolicy: React.FC<Props> = ({ className }) => {
   const sentences = text.split(".").filter((s) => s.trim() !== "");
 
   return (
-    <div className={cn(className, "flex mt-50 gap-5 w-full h-full")}>
+    <div className={cn(className, "flex mt-25 gap-5 w-full h-full")}>
       <Button className="absolute left-[5%]" onClick={() => (location.href = ".")}><Image src={"/icons/left.svg"} alt={""} width={24} height={24}></Image></Button>
       <div
         className={cn(
