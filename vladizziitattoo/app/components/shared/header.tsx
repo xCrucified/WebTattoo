@@ -54,7 +54,7 @@ export const Header: React.FC<Props> = ({ className }) => {
         isOpen ? "bg-black" : "blur_drop_down",
       )}
     >
-      <div className="flex items-center justify-around mx-auto h-full w-[90%]">
+      <div className="flex items-center justify-around mx-auto h-full w-[95%]">
         <div className="flex items-center space-x-3 w-full h-full">
           <a href="." className="flex items-center nav-item space-x-1 h-full">
             <Image
