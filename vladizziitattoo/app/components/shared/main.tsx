@@ -14,7 +14,7 @@ export const Main: React.FC<Props> = ({ className }) => {
   )}
 >
   <video
-    className="absolute top-0 left-0 object-cover z-10 w-full h-full"
+    className="absolute top-0 left-0 object-cover z-100 w-full h-full"
     src="/bg.mp4"
     autoPlay
     loop

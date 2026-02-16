@@ -33,15 +33,6 @@ main {
   overflow: hidden;
 }
 
-main video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
 .blur_drop_down {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
