@@ -92,6 +92,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
               Available For Work
             </p>
           </div>
+          
           <div className="text-5xl text-center shimmer-text">
             Curious about what we can create together? Let’s bring something
             extraordinary to life!

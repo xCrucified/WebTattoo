@@ -50,43 +50,39 @@ export const Header: React.FC<Props> = ({ className }) => {
     <header
       className={cn(
         className,
-        "w-[100%] shadow-md h-[100px]",
+        "flex justify-around items-center max-w-[100%] shadow-md h-[100px]",
         isOpen ? "bg-black" : "blur_drop_down",
       )}
     >
-      <div className="flex items-center justify-around mx-auto h-full w-[95%]">
-        <div className="flex items-center space-x-3 w-full h-full">
-          <a href="." className="flex items-center nav-item space-x-1 h-full">
-            <Image
-              src="/header_img/rose.svg"
-              alt="Vladizzi Tattoo Logo"
-              className="text-logo"
-              width={45}
-              height={45}
-            />
-            <h1 className="text-2xl font-bold text-logo">Vladizzii Tattoo</h1>
-          </a>
-        </div>
-
+      <div className="flex items-center h-full">
+        <a href="." className="flex items-center nav-item space-x-1 h-full">
+          <Image
+            src="/header_img/rose.svg"
+            alt="Vladizzi Tattoo Logo"
+            className="text-logo"
+            width={45}
+            height={45}
+          />
+          <h1 className="text-2xl font-bold text-logo">Vladizzii Tattoo</h1>
+        </a>
+      </div>
+      <div className="flex items-center h-full">
         {
           <nav
             className={`
         ${isOpen ? "flex" : "hidden"}
-xl:flex xl:relative xl:display-none hidden xl:bg-transparent 
-absolute 
-left-0 w-full 
-bg-[#121212] 
-flex-col lg:flex-row
- text-xl z-40
-h-[100%] 
-`}
+        xl:flex xl:relative xl:display-none hidden xl:bg-transparent 
+        relative top-0
+        left-0 w-full 
+        bg-[#121212] 
+        flex-col lg:flex-row
+        text-xl z-40
+        h-[100%] 
+        `}
           >
-            <ul className="flex justify-around w-full h-full">
+            <ul className="flex justify-around h-full gap-6">
               {route.map((x) => (
-                <li
-                  className="flex-1 flex w-32 flex-shrink-0 text-center nav-item"
-                  key={x.path}
-                >
+                <li className="flex flex-1 flex-shrink-0 nav-item" key={x.path}>
                   <a
                     className="flex items-center justify-center w-full h-full"
                     href={x.path}
@@ -144,10 +140,10 @@ h-[100%]
             >
               <div
                 className={`
-    fixed inset-x-0 top-0 z-50 mt-[6rem] bg-black text-white xl:hidden 
-    grid transition-[grid-template-rows,opacity,visibility] duration-500 ease-in-out
-    ${isOpen ? "grid-rows-[1fr] opacity-100 visible" : "grid-rows-[0fr] opacity-0 invisible"}
-  `}
+                    fixed inset-x-0 top-0 z-50 mt-[6rem] bg-black text-white xl:hidden 
+                    grid transition-[grid-template-rows,opacity,visibility] duration-500 ease-in-out
+                    ${isOpen ? "grid-rows-[1fr] opacity-100 visible" : "grid-rows-[0fr] opacity-0 invisible"}
+                  `}
               >
                 <div className="">
                   <nav className="flex flex-col items-center py-8 w-full">
@@ -190,11 +186,6 @@ h-[100%]
 
 export default Header;
 
-
-
-
-
-
-// ! x     m        x  !  
-// 3 7 11 15 22 29 37 44 
+// ! x     m        x  !
+// 3 7 11 15 22 29 37 44
 // mid = [0+7/2] = 3
