@@ -11,7 +11,7 @@ export const Main: React.FC<Props> = ({ className }) => {
     <main
       className={cn(
         className,
-        "relative mt-32 bg-black text-white text-2xl w-full min-h-screen overflow-hidden",
+        "relative bg-black text-white text-2xl w-full min-h-screen overflow-hidden",
       )}
     >
       <video
@@ -26,68 +26,77 @@ export const Main: React.FC<Props> = ({ className }) => {
 
       <div className="relative z-10 w-[100%] h-[100vh] flex flex-col items-center justify-start gap-20">
         {/* stage 1 main */}
-        <div className="flex flex-col justify-center items-center outline-2 gap-6 w-full outline-red-500">
+        <div className="flex flex-col justify-center items-center gap-4 w-full min-h-screen px-6">
+          {/* Badge */}
           <div
             className="
-            inline-flex items-center gap-4
-            rounded-full px-5 py-4
-            bg-gradient-to-r from-neutral-900 to-black
-            text-white
-            border-l-[0.5px] border-white/30
-            "
+      inline-flex items-center gap-3
+      rounded-full px-5 py-3
+      bg-gradient-to-r from-neutral-900 to-black
+      text-white
+      border border-white/20
+    "
           >
             <div
               className="
-                w-3 h-3 rounded-full bg-white animate-glow
-                shadow-[0_0_10px_rgba(255,255,255,0.9)]
-              "
+        w-2 h-2 rounded-full bg-white animate-glow
+        shadow-[0_0_10px_rgba(255,255,255,0.9)]
+      "
             />
+            <p className="text-lg md:text-base font-light tracking-wide">
+              Vladizzii Tattoo: Your new look.
+            </p>
+          </div>
 
-            <p className="text-1xl font-medium tracking-wide">
-              Crafting Unique Brand Identities
+          {/* Main text */}
+          <div className="flex flex-col gap-6 text-center max-w-3xl">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extralight leading-tight">
+              Your story carved in the skin
+            </h1>
+
+            <p className="text-lg md:text-xl text-gray-300 opacity-80 font-light">
+              From thin lines to large-scale projects. We create art that stays with you forever
             </p>
           </div>
-          <div className="flex flex-col gap-4 text-center w-[31%] outline-1">
-            <h1 className="text-7xl font-light">Branding that you  need Indeed</h1>
-            <p className="text-xl text-gray-300 opacity-75">
-              Elevate your brand with custom identity and package design. Showcase your story through bold visuals and strategic design solutions.
-            </p>
-          </div>
-          <div>
-            <Button>Get Started Now</Button>
-            <Button>See Projects</Button>
+
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full mt-8">
+            <Button
+              className="w-[180px] h-[3rem] rounded-xl px-5 py-3
+       bg-black
+      text-white
+      border-[1px] border-white/20 text-lg font-light animate-border"
+            >
+              To enroll
+            </Button>
+            <Button
+              className="w-[180px] h-[3rem] font-light rounded-xl px-5 py-3
+       bg-black
+      text-white
+      border-[1px] border-white/20 text-lg animate-border"
+            >
+              Aesthetics of pain
+            </Button>
           </div>
         </div>
 
         {/* stage 2 photos */}
-        <div>
-
-        </div>
+        <div></div>
 
         {/* stage 3 about me + recent works */}
-        <div>
-
-        </div>
+        <div></div>
 
         {/* stage 4 process */}
-        <div>
-
-        </div>
+        <div></div>
 
         {/* stage 5 services */}
-        <div>
-
-        </div>
+        <div></div>
 
         {/* stage 6 client reviews(optional) */}
-        <div>
-
-        </div>
+        <div></div>
 
         {/* stage 7 answers (optional) */}
-        <div>
-
-        </div>
+        <div></div>
       </div>
     </main>
   );

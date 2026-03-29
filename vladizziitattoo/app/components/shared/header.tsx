@@ -63,7 +63,7 @@ export const Header: React.FC<Props> = ({ className }) => {
             width={45}
             height={45}
           />
-          <h1 className="text-2xl font-bold text-logo">Vladizzii Tattoo</h1>
+          <h1 className="text-2xl font-medium text-logo">Vladizzii Tattoo</h1>
         </a>
       </div>
       <div className="flex items-center h-full">
@@ -87,7 +87,7 @@ export const Header: React.FC<Props> = ({ className }) => {
                     className="flex items-center justify-center w-full h-full"
                     href={x.path}
                   >
-                    <p className="text-lg">{x.name}</p>
+                    <p className="text-lg font-light">{x.name}</p>
                   </a>
                 </li>
               ))}
@@ -99,7 +99,7 @@ export const Header: React.FC<Props> = ({ className }) => {
                 >
                   <span className="flex items-center justify-center gap-1">
                     <RoseSVG className="w-6 h-6" />
-                    <p>Check In</p>
+                    <p className="font-light">Check In</p>
                   </span>
                 </a>
               </li>
