@@ -26,22 +26,22 @@ export const Main: React.FC<Props> = ({ className }) => {
 
       <div className="relative z-10 w-[100%] flex flex-col items-center justify-start gap-5 h-full">
         {/* stage 1 main */}
-        <div className="flex flex-col justify-center items-center gap-4 w-full min-h-screen px-6">
+        <div className="flex flex-col justify-center items-center gap-5 w-full min-h-screen px-6">
           {/* Badge */}
           <div
             className="
-      inline-flex items-center gap-3
-      rounded-full px-5 py-3
-      bg-gradient-to-r from-neutral-900 to-black
-      text-white
-      border border-white/20
-    "
+            inline-flex items-center gap-3
+            rounded-full px-5 py-3
+            bg-gradient-to-r from-neutral-900 to-black
+            text-white
+            border border-white/20
+          "
           >
             <div
               className="
-        w-2 h-2 rounded-full bg-white animate-glow
-        shadow-[0_0_10px_rgba(255,255,255,0.9)]
-      "
+                w-2 h-2 rounded-full bg-white animate-glow
+                shadow-[0_0_10px_rgba(255,255,255,0.9)]
+              "
             />
             <p className="text-lg md:text-base font-light tracking-wide">
               Vladizzii Tattoo: Your new look.
