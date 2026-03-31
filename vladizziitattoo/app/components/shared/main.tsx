@@ -11,7 +11,7 @@ export const Main: React.FC<Props> = ({ className }) => {
     <main
       className={cn(
         className,
-        "relative bg-black text-white text-2xl w-full min-h-screen overflow-hidden",
+        "relative bg-black text-white text-2xl w-full min-h-screen overflow-hidden mt-10",
       )}
     >
       <video
@@ -24,7 +24,7 @@ export const Main: React.FC<Props> = ({ className }) => {
         <source src="/bg3hevc.mp4" type="video/mp4" className="w-full h-full" />
       </video>
 
-      <div className="relative z-10 w-[100%] flex flex-col items-center justify-start gap-20">
+      <div className="relative z-10 w-[100%] flex flex-col items-center justify-start gap-5 h-full">
         {/* stage 1 main */}
         <div className="flex flex-col justify-center items-center gap-4 w-full min-h-screen px-6">
           {/* Badge */}
@@ -91,8 +91,8 @@ export const Main: React.FC<Props> = ({ className }) => {
         </div>
 
         {/* stage 2 photos */}
-        <div>
-          
+        <div className=" w-full h-[100vh]">
+          a
         </div>
 
         {/* stage 3 about me + recent works */}
