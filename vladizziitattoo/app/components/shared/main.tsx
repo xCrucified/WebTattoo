@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 import { Button } from "../ui/button";
-
+import Image from "next/image";
 interface Props {
   className?: string;
 }
@@ -24,7 +24,7 @@ export const Main: React.FC<Props> = ({ className }) => {
         <source src="/bg3hevc.mp4" type="video/mp4" className="w-full h-full" />
       </video>
 
-      <div className="relative z-10 w-[100%] h-[100vh] flex flex-col items-center justify-start gap-20">
+      <div className="relative z-10 w-[100%] flex flex-col items-center justify-start gap-20">
         {/* stage 1 main */}
         <div className="flex flex-col justify-center items-center gap-4 w-full min-h-screen px-6">
           {/* Badge */}
@@ -78,10 +78,21 @@ export const Main: React.FC<Props> = ({ className }) => {
               Aesthetics of pain
             </Button>
           </div>
+          <div
+            className="flex justify-center items-center gap-3 mt-10 text-lg font-light text-gray-200 opacity-80"
+          >
+            <p>Scroll down</p>
+            <hr className="w-34 opacity-40"/>
+            <Image src={"/main_img/mouse.svg"} alt={""} width={25} height={20} className="animate-bounce translate-y-1"></Image>
+            <hr className="w-34 opacity-40"/>
+            <p>to see projects</p>
+          </div>
         </div>
 
         {/* stage 2 photos */}
-        <div></div>
+        <div>
+          
+        </div>
 
         {/* stage 3 about me + recent works */}
         <div></div>
