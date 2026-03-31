@@ -79,7 +79,7 @@ export const Main: React.FC<Props> = ({ className }) => {
             </Button>
           </div>
           <div
-            className="flex justify-center w-full outline items-center text-center gap-3 mt-10 text-lg font-light text-gray-200 opacity-80"
+            className="flex justify-center w-full items-center text-center gap-3 mt-10 text-lg font-light text-gray-200 opacity-80"
           >
             <p className="w-[10rem]">Scroll down</p>
             <hr className="w-[10rem] opacity-40 hidden sm:block"/>
@@ -87,6 +87,7 @@ export const Main: React.FC<Props> = ({ className }) => {
             <hr className="w-[10rem] opacity-40 hidden sm:block"/>
             <p className="w-[10rem]">to see projects</p>
           </div>
+          
         </div>
 
         {/* stage 2 photos */}
