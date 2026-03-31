@@ -50,7 +50,7 @@ export const Main: React.FC<Props> = ({ className }) => {
 
           {/* Main text */}
           <div className="flex flex-col gap-6 text-center max-w-3xl">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extralight leading-tight">
+            <h1 className="text-4xl md:text-7xl lg:text-8xl font-extralight leading-tight">
               Your story carved in the skin
             </h1>
 
