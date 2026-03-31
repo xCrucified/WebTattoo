@@ -79,13 +79,13 @@ export const Main: React.FC<Props> = ({ className }) => {
             </Button>
           </div>
           <div
-            className="flex justify-center w-full items-center gap-3 mt-10 text-lg font-light text-gray-200 opacity-80"
+            className="flex justify-center w-full outline items-center text-center gap-3 mt-10 text-lg font-light text-gray-200 opacity-80"
           >
-            <p>Scroll down</p>
+            <p className="w-[10rem]">Scroll down</p>
             <hr className="w-[10rem] opacity-40 hidden sm:block"/>
             <Image src={"/main_img/mouse.svg"} alt={""} width={25} height={20} className="animate-bounce translate-y-1"></Image>
             <hr className="w-[10rem] opacity-40 hidden sm:block"/>
-            <p>to see projects</p>
+            <p className="w-[10rem]">to see projects</p>
           </div>
         </div>
 
