@@ -11,7 +11,7 @@ export const Main: React.FC<Props> = ({ className }) => {
     <main
       className={cn(
         className,
-        "relative bg-black text-white text-2xl w-full min-h-screen overflow-hidden mt-10",
+        "relative bg-black text-white text-2xl w-full min-h-screen overflow-hidden",
       )}
     >
       <video
