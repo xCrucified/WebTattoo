@@ -4,10 +4,10 @@ import { cn } from "@/lib/utils";
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { useEffect } from "react";
-import { AnimatePresence, useVelocity, wrap } from "framer-motion";
 import RoseSVG from "@/app/misc/rose_svg";
 import FallingStarSVG from "@/app/misc/falling-star_svg";
-import CarouselText from "@/app/misc/carouselFunc";
+import CarouselText from "@/app/components/ui/carouselFunc";
+import AdCarousel from "./ad-carousel";
 
 interface Props {
   className?: string;
@@ -35,13 +35,7 @@ const route: Routes[] = [
     path: "#testimonials",
   },
 ];
-const elements = [
-  "Tatooruffka",
-  "Tatooruffka",
-  "Tatooruffka",
-  "Tatooruffka",
-  "Tatooruffka",
-];
+
 export const Header: React.FC<Props> = ({ className }) => {
   // const [isOpen, setIsOpen] = useState(false);
   // useEffect(() => {
@@ -54,47 +48,54 @@ export const Header: React.FC<Props> = ({ className }) => {
   //   return () => window.removeEventListener("resize", handleResize);
   // }, [isOpen, setIsOpen]);
   return (
-    <header className={cn("fixed top-0 w-full z-100 flex flex-col items-center", className)}>
-      <section className="w-full py-1 overflow-hidden bg-black">
-        <CarouselText baseVelocity={5}>
-          <div className="flex items-center gap-10 pr-10">
-            {elements.map((text, index) => (
-              <div key={index} className="flex-shrink-0 px-8">
-                <p className="text-lg">{text}</p>
-              </div>
+    <>
+      <AdCarousel />
+      <header
+        className={cn(
+          "fixed top-0 mt-5 w-full z-100 flex flex-col items-center",
+          className,
+        )}
+      >
+        <div className="flex w-full h-full items-center justify-center gap-3">
+          <a
+            href="."
+            className="flex relative items-center nav-item space-x-1 h-full"
+          >
+            <Image
+              src="/header_img/rose.svg"
+              alt="Vladizzi Tattoo Logo"
+              className="text-logo"
+              width={45}
+              height={45}
+            />
+            <h1 className="text-3xl font-medium text-logo">Vladizzii Tattoo</h1>
+          </a>
+          <div className="flex w-[50%] left-0 right-0 m-5 outline-1 h-fit gap-10 text-lg justify-around p-5 rounded-full text-center">
+            {route.map((x) => (
+              <li
+                className="flex flex-1 flex-shrink-0 nav-item border rounded-full py-4"
+                key={x.path}
+              >
+                <a
+                  className="flex items-center justify-center w-full h-full"
+                  href={x.path}
+                >
+                  <p className="text-lg font-light">{x.name}</p>
+                </a>
+              </li>
             ))}
           </div>
-        </CarouselText>
-      </section>
-      <div className="flex w-full h-full items-center justify-center gap-3">
-        <a
-          href="."
-          className="flex relative items-center nav-item space-x-1 h-full"
-        >
-          <Image
-            src="/header_img/rose.svg"
-            alt="Vladizzi Tattoo Logo"
-            className="text-logo"
-            width={45}
-            height={45}
-          />
-          <h1 className="text-3xl font-medium text-logo">Vladizzii Tattoo</h1>
-        </a>
-        <div className="flex w-[50%] left-0 right-0 m-5 outline-1 h-fit gap-10 text-lg justify-around p-5 rounded-full text-center">
-          {route.map((x) => (
-            <li className="flex flex-1 flex-shrink-0 nav-item" key={x.path}>
-              <a
-                className="flex items-center justify-center w-full h-full"
-                href={x.path}
-              >
-                <p className="text-lg font-light">{x.name}</p>
-              </a>
-            </li>
-          ))}
+          <button
+            onClick={() => {
+              location.href = "/";
+            }}
+            className="outline-1 p-5 rounded-full"
+          >
+            Check In
+          </button>
         </div>
-        <div className="outline-1 p-5 rounded-full">Check In</div>
-      </div>
-    </header>
+      </header>
+    </>
     // <header
     //   className={cn(
     //     className,
