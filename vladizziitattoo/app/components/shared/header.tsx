@@ -56,11 +56,11 @@ export const Header: React.FC<Props> = ({ className }) => {
           className,
         )}
       >
-        <div className="flex w-full h-full items-center lg:justify-center lg:mt-2 mt-10 justify-around">
+        <div className="flex outline w-full h-full items-center lg:justify-center lg:mt-2 mt-10 justify-around">
           <div className="flex max-lg:w-full items-center justify-around">
             <a
               href="."
-              className="flex items-center nav-item h-full"
+              className="flex items-center nav-item h-full gap-2" 
             >
               <Image
                 src="/header_img/rose.svg"
@@ -77,7 +77,7 @@ export const Header: React.FC<Props> = ({ className }) => {
               </h1>
             </a>
 
-            <div className="max-lg:flex hidden left-0 right-0 m-5 h-fit gap-10 text-lg justify-around rounded-full text-center">
+            <div className="max-lg:flex outline hidden p-3 h-fit gap-10 text-lg justify-around">
               <button
                 className="flex-col h-8 w-8 justify-center items-center cursor-pointer"
                 onClick={() => setIsOpen(!isOpen)}
@@ -101,10 +101,10 @@ export const Header: React.FC<Props> = ({ className }) => {
               </button>
             </div>
           </div>
-          <div className="lg:flex hidden h-full left-0 right-0 gap-10 text-lg justify-around p-5 text-center">
+          <div className="lg:flex hidden h-full gap-10 text-lg justify-around p-5 text-center">
             {route.map((x) => (
               <li
-                className="flex flex-1 shrink-0 xl:w-40 w-29 nav-item border rounded-full py-4"
+                className="flex flex-1 xl:w-40 w-29 nav-item border rounded-full py-4"
                 key={x.path}
               >
                 <a
@@ -119,7 +119,7 @@ export const Header: React.FC<Props> = ({ className }) => {
             onClick={() => {
               location.href = "/";
             }}
-            className="outline p-4 rounded-full whitespace-nowrap"
+            className="outline p-5 rounded-full whitespace-nowrap"
           >
             Check In
           </button>
