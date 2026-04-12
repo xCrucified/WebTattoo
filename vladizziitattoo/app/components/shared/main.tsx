@@ -15,7 +15,7 @@ export const Main: React.FC<Props> = ({ className }) => {
       )}
     >
       <video
-        className="absolute top-0 left-0 object-cover w-full h-[100vh] opacity-35"
+        className="absolute top-0 left-0 object-cover w-full h-screen opacity-35"
         autoPlay
         loop
         muted
@@ -24,7 +24,7 @@ export const Main: React.FC<Props> = ({ className }) => {
         <source src="/bg3hevc.mp4" type="video/mp4" className="w-full h-full" />
       </video>
 
-      <div className="relative z-10 w-[100%] flex flex-col items-center justify-start gap-5 h-full">
+      <div className="relative z-10 w-full flex flex-col items-center justify-start gap-5 h-full">
         {/* stage 1 main */}
         <div className="flex flex-col justify-center items-center gap-5 w-full min-h-screen px-6">
           {/* Badge */}
@@ -32,7 +32,7 @@ export const Main: React.FC<Props> = ({ className }) => {
             className="
             inline-flex items-center gap-3
             rounded-full px-5 py-3
-            bg-gradient-to-r from-neutral-900 to-black
+            bg-linear-to-r from-neutral-900 to-black
             text-white
             border border-white/20
           "
@@ -62,18 +62,18 @@ export const Main: React.FC<Props> = ({ className }) => {
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full mt-8">
             <Button
-              className="w-[180px] h-[3rem] rounded-xl px-5 py-3
+              className="w-45 h-12 rounded-xl px-5 py-3
        bg-black
       text-white
-      border-[1px] border-white/20 text-lg font-light animate-border"
+      border border-white/20 text-lg font-light animate-border"
             >
               To enroll
             </Button>
             <Button
-              className="w-[180px] h-[3rem] font-light rounded-xl px-5 py-3
+              className="w-45 h-12 font-light rounded-xl px-5 py-3
        bg-black
       text-white
-      border-[1px] border-white/20 text-lg animate-border"
+      border border-white/20 text-lg animate-border"
             >
               Aesthetics of pain
             </Button>
@@ -81,17 +81,17 @@ export const Main: React.FC<Props> = ({ className }) => {
           <div
             className="flex justify-center w-full items-center text-center gap-3 mt-10 text-lg font-light text-gray-200 opacity-80"
           >
-            <p className="w-[10rem]">Scroll down</p>
-            <hr className="w-[10rem] opacity-40 hidden sm:block"/>
+            <p className="w-40">Scroll down</p>
+            <hr className="w-40 opacity-40 hidden sm:block"/>
             <Image src={"/main_img/mouse.svg"} alt={""} width={25} height={20} className="animate-bounce translate-y-1"></Image>
-            <hr className="w-[10rem] opacity-40 hidden sm:block"/>
-            <p className="w-[10rem]">to see projects</p>
+            <hr className="w-40 opacity-40 hidden sm:block"/>
+            <p className="w-40">to see projects</p>
           </div>
           
         </div>
 
         {/* stage 2 photos */}
-        <div className=" w-full h-[100vh]">
+        <div className=" w-full h-screen">
           a
         </div>
 

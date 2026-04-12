@@ -66,7 +66,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
     <footer
       className={cn(
         className,
-        "relative flex justify-between items-center flex-col bottom-0 w-full h-[100vh] bg-[#000000]",
+        "relative flex justify-between items-center flex-col bottom-0 w-full h-screen bg-[#000000]",
       )}
     >
       {/*  */}
@@ -76,7 +76,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
             className="
   inline-flex items-center gap-4
   rounded-full px-6 py-5
-  bg-gradient-to-r from-neutral-900 to-black
+  bg-linear-to-r from-neutral-900 to-black
   text-white
   border-l-[0.5px] border-white/30
 "
@@ -102,7 +102,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
             className="
     relative
     flex items-center justify-center
-    h-[65px] w-[260px]
+    h-16.25 w-65
     rounded-3xl
   text-white text-lg font-medium
     ring-1 ring-white/10
@@ -110,7 +110,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
     transition-all duration-200 ease-in-out
     hover:ring-white/25
     hover:scale-[1.02]
-    hover:bg-gradient-to-r hover:from-neutral-900 hover:to-black
+    hover:bg-linear-to-r hover:from-neutral-900 hover:to-black
     active:scale-[0.98]
   "
           >

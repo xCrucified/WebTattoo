@@ -37,43 +37,74 @@ const route: Routes[] = [
 ];
 
 export const Header: React.FC<Props> = ({ className }) => {
-  // const [isOpen, setIsOpen] = useState(false);
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     if (window.innerWidth >= 1280 /* px */) {
-  //       setIsOpen(false);
-  //     }
-  //   };
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, [isOpen, setIsOpen]);
+  const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1280 /* px */) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isOpen, setIsOpen]);
   return (
     <>
       <AdCarousel />
       <header
         className={cn(
-          "fixed top-0 mt-5 w-full z-100 flex flex-col items-center",
+          "fixed top-0 mt-2 lg:mt-10 w-full z-100 flex flex-col items-center justify-center",
           className,
         )}
       >
-        <div className="flex w-full h-full items-center justify-center gap-3">
-          <a
-            href="."
-            className="flex relative items-center nav-item space-x-1 h-full"
-          >
-            <Image
-              src="/header_img/rose.svg"
-              alt="Vladizzi Tattoo Logo"
-              className="text-logo"
-              width={45}
-              height={45}
-            />
-            <h1 className="text-3xl font-medium text-logo">Vladizzii Tattoo</h1>
-          </a>
-          <div className="flex w-[50%] left-0 right-0 m-5 outline-1 h-fit gap-10 text-lg justify-around p-5 rounded-full text-center">
+        <div className="flex w-full h-full items-center lg:justify-center lg:mt-2 mt-10 justify-around">
+          <div className="flex max-lg:w-full items-center justify-around">
+            <a
+              href="."
+              className="flex items-center nav-item h-full"
+            >
+              <Image
+                src="/header_img/rose.svg"
+                alt="Vladizzi Tattoo Logo"
+                className="text-logo"
+                width={40}
+                height={40}
+              />
+              <h1
+                id="titel"
+                className="text-3xl font-medium text-logo max-sm:hidden"
+              >
+                Vladizzii Tattoo
+              </h1>
+            </a>
+
+            <div className="max-lg:flex hidden left-0 right-0 m-5 h-fit gap-10 text-lg justify-around rounded-full text-center">
+              <button
+                className="flex-col h-8 w-8 justify-center items-center cursor-pointer"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle menu"
+              >
+                {isOpen ? (
+                  <Image
+                    src="/header_img/close.svg"
+                    width={26}
+                    height={26}
+                    alt="Close"
+                  />
+                ) : (
+                  <Image
+                    src="/header_img/menu.svg"
+                    width={32}
+                    height={32}
+                    alt="Menu"
+                  />
+                )}
+              </button>
+            </div>
+          </div>
+          <div className="lg:flex hidden h-full left-0 right-0 gap-10 text-lg justify-around p-5 text-center">
             {route.map((x) => (
               <li
-                className="flex flex-1 flex-shrink-0 nav-item border rounded-full py-4"
+                className="flex flex-1 shrink-0 xl:w-40 w-29 nav-item border rounded-full py-4"
                 key={x.path}
               >
                 <a
@@ -84,15 +115,16 @@ export const Header: React.FC<Props> = ({ className }) => {
                 </a>
               </li>
             ))}
-          </div>
           <button
             onClick={() => {
               location.href = "/";
             }}
-            className="outline-1 p-5 rounded-full"
+            className="outline p-4 rounded-full whitespace-nowrap"
           >
             Check In
           </button>
+          </div>
+
         </div>
       </header>
     </>
@@ -156,27 +188,27 @@ export const Header: React.FC<Props> = ({ className }) => {
     //       </nav>
     //     }
 
-    //     <button
-    //       className="max-[1280px]:flex hidden flex-col h-8 w-8 justify-center items-center outline-none z-[60] cursor-pointer"
-    //       onClick={() => setIsOpen(!isOpen)}
-    //       aria-label="Toggle menu"
-    //     >
-    //       {isOpen ? (
-    //         <Image
-    //           src="/header_img/close.svg"
-    //           width={26}
-    //           height={26}
-    //           alt="Close"
-    //         />
-    //       ) : (
-    //         <Image
-    //           src="/header_img/menu.svg"
-    //           width={32}
-    //           height={32}
-    //           alt="Menu"
-    //         />
-    //       )}
-    //     </button>
+    // <button
+    //   className="max-[1280px]:flex hidden flex-col h-8 w-8 justify-center items-center outline-none z-[60] cursor-pointer"
+    //   onClick={() => setIsOpen(!isOpen)}
+    //   aria-label="Toggle menu"
+    // >
+    //   {isOpen ? (
+    //     <Image
+    //       src="/header_img/close.svg"
+    //       width={26}
+    //       height={26}
+    //       alt="Close"
+    //     />
+    //   ) : (
+    //     <Image
+    //       src="/header_img/menu.svg"
+    //       width={32}
+    //       height={32}
+    //       alt="Menu"
+    //     />
+    //   )}
+    // </button>
 
     //     <AnimatePresence>
     //       {isOpen && (
