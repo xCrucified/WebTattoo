@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { cn } from "@/lib/utils";
 import React, { useEffect } from "react";
 import { Button } from "../ui/button";
@@ -8,7 +8,6 @@ interface Props {
 }
 
 export const Main: React.FC<Props> = ({ className }) => {
-
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -29,7 +28,7 @@ export const Main: React.FC<Props> = ({ className }) => {
       )}
     >
       <video
-        className="absolute top-0 left-0 object-cover w-full h-screen opacity-35"
+        className="absolute top-0 left-0 object-cover w-full min-h-[100dvh] opacity-35"
         autoPlay
         loop
         muted
@@ -40,21 +39,23 @@ export const Main: React.FC<Props> = ({ className }) => {
 
       <div className="relative z-10 w-full flex flex-col items-center justify-start gap-5">
         {/* stage 1 main */}
-        <div className="flex flex-col justify-center items-center gap-5 w-full h-screen outline px-6">
-          {/* Badge */}
-          <div
+<div className="
+  flex flex-col items-center justify-center gap-5
+  min-h-[100dvh]
+  w-full px-6
+">          <div
             className="
             inline-flex items-center gap-3
-            rounded-full px-5 py-3
+            rounded-full px-5 py-4
             bg-linear-to-r from-neutral-900 to-black
             text-white
             border border-white/20
-          "
+            "
           >
             <div
               className="
-                w-2 h-2 rounded-full bg-white animate-glow
-                shadow-[0_0_10px_rgba(255,255,255,0.9)]
+              w-2 h-2 rounded-full bg-white animate-glow
+              shadow-[0_0_10px_rgba(255,255,255,0.9)]
               "
             />
             <p className="text-lg md:text-base font-light tracking-wide">
@@ -69,7 +70,8 @@ export const Main: React.FC<Props> = ({ className }) => {
             </h1>
 
             <p className="text-lg md:text-xl text-gray-300 opacity-80 font-light">
-              From thin lines to large-scale projects. We create art that stays with you forever
+              From thin lines to large-scale projects. We create art that stays
+              with you forever
             </p>
           </div>
 
@@ -77,39 +79,38 @@ export const Main: React.FC<Props> = ({ className }) => {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full mt-8">
             <Button
               className="w-45 h-12 rounded-xl px-5 py-3
-       bg-black
-      text-white
-      border border-white/20 text-lg font-light animate-border"
+            bg-black
+            text-white
+              border border-white/20 text-lg font-light animate-border"
             >
               To enroll
             </Button>
             <Button
               className="w-45 h-12 font-light rounded-xl px-5 py-3
-       bg-black
-      text-white
-      border border-white/20 text-lg animate-border"
+              bg-black
+              text-white
+                border border-white/20 text-lg animate-border"
             >
               Aesthetics of pain
             </Button>
           </div>
-          <div
-            className="flex justify-center w-full items-center text-center gap-3 mt-10 text-lg font-light text-gray-200 opacity-80"
-          >
+          <div className="flex justify-center w-full items-center text-center gap-3 mt-10 text-lg font-light text-gray-200 opacity-80">
             <p className="w-40">Scroll down</p>
-            <hr className="w-40 opacity-40 hidden sm:block"/>
-            <Image src={"/main_img/mouse.svg"} alt={""} width={25} height={20} className="animate-bounce translate-y-1"></Image>
-            <hr className="w-40 opacity-40 hidden sm:block"/>
+            <hr className="w-40 opacity-40 hidden sm:block" />
+            <Image
+              src={"/main_img/mouse.svg"}
+              alt={""}
+              width={25}
+              height={20}
+              className="animate-bounce translate-y-1"
+            ></Image>
+            <hr className="w-40 opacity-40 hidden sm:block" />
             <p className="w-40">to see projects</p>
           </div>
-          
         </div>
 
         {/* stage 2 photos */}
-        <div className=" w-full h-screen">
-          {
-
-          }
-        </div>
+        <div className=" w-full h-screen">asd</div>
 
         {/* stage 3 about me + recent works */}
         <div></div>
