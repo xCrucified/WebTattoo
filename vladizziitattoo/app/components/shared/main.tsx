@@ -1,5 +1,6 @@
+'use client';
 import { cn } from "@/lib/utils";
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 interface Props {
@@ -7,6 +8,19 @@ interface Props {
 }
 
 export const Main: React.FC<Props> = ({ className }) => {
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const mainElement = document.querySelector("main");
+      if (mainElement) {
+        mainElement.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <main
       className={cn(
@@ -24,9 +38,9 @@ export const Main: React.FC<Props> = ({ className }) => {
         <source src="/bg3hevc.mp4" type="video/mp4" className="w-full h-full" />
       </video>
 
-      <div className="relative z-10 w-full flex flex-col items-center justify-start gap-5 h-full">
+      <div className="relative z-10 w-full flex flex-col items-center justify-start gap-5">
         {/* stage 1 main */}
-        <div className="flex flex-col justify-center items-center gap-5 w-full min-h-screen px-6">
+        <div className="flex flex-col justify-center items-center gap-5 w-full h-screen outline px-6">
           {/* Badge */}
           <div
             className="
@@ -92,7 +106,9 @@ export const Main: React.FC<Props> = ({ className }) => {
 
         {/* stage 2 photos */}
         <div className=" w-full h-screen">
-          a
+          {
+
+          }
         </div>
 
         {/* stage 3 about me + recent works */}
