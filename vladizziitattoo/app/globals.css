@@ -159,8 +159,8 @@ main {
   }
 }
 
-@media (height <= 750px) {
+@media (height <= 770px) {
   main {
-    margin-top: 20px;
+    margin-top: 50px;
   }
 }
