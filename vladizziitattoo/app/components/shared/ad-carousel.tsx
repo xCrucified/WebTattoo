@@ -16,7 +16,7 @@ export const AdCarousel: React.FC<Props> = ({className }) => {
       "Tatooruffka"
     ];
   return (
-    <section className={cn("w-full py-1 overflow-hidden bg-black", className)}>
+    <section className={cn("w-full py-1 overflow-hidden", className)}>
             <CarouselText baseVelocity={5}>
               <motion.div
                 initial={{ opacity: 0 }}

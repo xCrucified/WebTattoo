@@ -49,19 +49,23 @@ export const Header: React.FC<Props> = ({ className }) => {
   }, [isOpen, setIsOpen]);
   return (
     <>
-      <AdCarousel />
-      <header
-        className={cn(
-          "fixed top-0 mt-2 lg:mt-10 w-full z-100 flex flex-col items-center justify-center",
-          className,
-        )}
-      >
-        <div className="flex outline w-full h-full items-center lg:justify-center lg:mt-2 mt-10 justify-around">
+      <AdCarousel className="absolute z-[10] top-0" />
+
+<header
+  className={cn(
+    "fixed top-0 w-full z-[50] flex flex-col items-center justify-center",
+    className,
+  )}
+>
+  <div
+    className="flex relative z-[60] 
+      backdrop-blur-md bg-black/70 px-10 max-sm:w-[70%]
+      outline outline-gray-100/15 rounded-br-4xl rounded-bl-4xl 
+      h-[100px]
+      items-center lg:justify-center justify-around sm:justify-between"
+  >
           <div className="flex max-lg:w-full items-center justify-around">
-            <a
-              href="."
-              className="flex items-center nav-item h-full gap-2" 
-            >
+            <a href="." className="flex items-center nav-item h-full gap-2">
               <Image
                 src="/header_img/rose.svg"
                 alt="Vladizzi Tattoo Logo"
@@ -77,7 +81,7 @@ export const Header: React.FC<Props> = ({ className }) => {
               </h1>
             </a>
 
-            <div className="max-lg:flex outline hidden p-3 h-fit gap-10 text-lg justify-around">
+            <div className="max-lg:flex hidden p-3 h-fit gap-10 text-lg justify-around">
               <button
                 className="flex-col h-8 w-8 justify-center items-center cursor-pointer"
                 onClick={() => setIsOpen(!isOpen)}
@@ -104,7 +108,7 @@ export const Header: React.FC<Props> = ({ className }) => {
           <div className="lg:flex hidden h-full gap-10 text-lg justify-around p-5 text-center">
             {route.map((x) => (
               <li
-                className="flex flex-1 xl:w-40 w-29 nav-item border rounded-full py-4"
+                className="flex flex-1 xl:w-40 w-29 nav-item outline outline-gray-100/15 rounded-full py-4"
                 key={x.path}
               >
                 <a
@@ -115,16 +119,15 @@ export const Header: React.FC<Props> = ({ className }) => {
                 </a>
               </li>
             ))}
-          <button
-            onClick={() => {
-              location.href = "/";
-            }}
-            className="outline p-5 rounded-full whitespace-nowrap"
-          >
-            Check In
-          </button>
+            <button
+              onClick={() => {
+                location.href = "/";
+              }}
+              className="outline outline-gray-100/15 p-4 rounded-full whitespace-nowrap"
+            >
+              Check In
+            </button>
           </div>
-
         </div>
       </header>
     </>

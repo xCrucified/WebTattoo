@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="font-thin max-w-[100vw] overflow-x-hidden">
+    <html lang="en" className="font-thin max-w-[100vw] overflow-x-hidden bg-black">
       <body className={`${outfit.className} antialiased`}>
         <Header />
         {children}

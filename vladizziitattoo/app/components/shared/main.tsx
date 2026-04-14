@@ -45,8 +45,8 @@ export const Main: React.FC<Props> = ({ className }) => {
           <div className="relative z-10 flex flex-col self-center items-center gap-5 text-center max-w-3xl w-full">
             {/* Badge */}
             <div className="inline-flex items-center gap-3 rounded-full px-5 py-4 bg-gradient-to-r from-neutral-900 to-black text-white border border-white/20">
-              <div className="w-2 h-2 rounded-full bg-white animate-glow shadow-[0_0_10px_rgba(255,255,255,0.9)]" />
-              <p className="text-lg md:text-base font-light tracking-wide">
+              <div className="w-2 h-2 rounded-full bg-white animate-glow" />
+              <p className="max-sm:text-sm max-md:text-lg max-lg:text-xl max-xl:text-2xl font-light tracking-wide">
                 Vladizzii Tattoo: Your new look.
               </p>
             </div>
