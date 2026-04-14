@@ -161,6 +161,6 @@ main {
 
 @media (height <= 750px) {
   main {
-    margin-top: 100px;
+    margin-top: 20px;
   }
 }

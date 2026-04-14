@@ -24,7 +24,7 @@ export const Main: React.FC<Props> = ({ className }) => {
     <main
       className={cn(
         className,
-        "relative bg-black text-white text-2xl w-full min-h-screen overflow-hidden",
+        "relative z-100 text-white text-2xl w-full min-h-screen overflow-hidden",
       )}
     >
       <div className="relative z-10 w-full flex flex-col items-center">
