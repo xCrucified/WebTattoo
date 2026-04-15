@@ -58,20 +58,20 @@ export const Header: React.FC<Props> = ({ className }) => {
   )}
 >
   <div
-    className="flex relative z-[60] 
-      backdrop-blur-md bg-black/70 px-10 max-sm:w-[70%]
+    className="flex relative z-[60] w-full max-w-[1440px]
+      backdrop-blur-md bg-black/70 px-10 max-lg:w-[80%]
       outline outline-gray-100/15 rounded-br-4xl rounded-bl-4xl 
       h-[100px]
-      items-center lg:justify-center justify-around sm:justify-between"
+      items-center justify-between"
   >
-          <div className="flex max-lg:w-full items-center justify-around">
+          <div className="flex w-full items-center justify-between">
             <a href="." className="flex items-center nav-item h-full gap-2">
               <Image
                 src="/header_img/rose.svg"
                 alt="Vladizzi Tattoo Logo"
                 className="text-logo"
-                width={40}
-                height={40}
+                width={45}
+                height={45}
               />
               <h1
                 id="titel"
@@ -81,23 +81,23 @@ export const Header: React.FC<Props> = ({ className }) => {
               </h1>
             </a>
 
-            <div className="max-lg:flex hidden p-3 h-fit gap-10 text-lg justify-around">
+            <div className="max-lg:flex hidden">
               <button
-                className="flex-col h-8 w-8 justify-center items-center cursor-pointer"
+                className="flex-col w-full cursor-pointer"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Toggle menu"
               >
                 {isOpen ? (
                   <Image
                     src="/header_img/close.svg"
-                    width={26}
-                    height={26}
+                    width={32}
+                    height={32}
                     alt="Close"
                   />
                 ) : (
                   <Image
                     src="/header_img/menu.svg"
-                    width={32}
+                    width={42}
                     height={32}
                     alt="Menu"
                   />
@@ -108,7 +108,7 @@ export const Header: React.FC<Props> = ({ className }) => {
           <div className="lg:flex hidden h-full gap-10 text-lg justify-around p-5 text-center">
             {route.map((x) => (
               <li
-                className="flex flex-1 xl:w-40 w-29 nav-item outline outline-gray-100/15 rounded-full py-4"
+                className="flex flex-1 xl:w-40 w-29 nav-item outline outline-gray-100/15 rounded-full py-4 hover:bg-gray-700/15 cursor-pointer"
                 key={x.path}
               >
                 <a
@@ -123,7 +123,7 @@ export const Header: React.FC<Props> = ({ className }) => {
               onClick={() => {
                 location.href = "/";
               }}
-              className="outline outline-gray-100/15 p-4 rounded-full whitespace-nowrap"
+              className="outline bg-gray-700/15 nav-item outline-gray-100/15 p-4 rounded-full whitespace-nowrap hover:bg-gray-700/30 cursor-grab font-light"
             >
               Check In
             </button>
