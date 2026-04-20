@@ -8,6 +8,8 @@ import RoseSVG from "@/app/misc/rose_svg";
 import FallingStarSVG from "@/app/misc/falling-star_svg";
 import CarouselText from "@/app/components/ui/carouselFunc";
 import AdCarousel from "./ad-carousel";
+import { Sign } from "crypto";
+import { SignUp_Modal } from "../ui/sign-up";
 
 interface Props {
   className?: string;
@@ -51,19 +53,19 @@ export const Header: React.FC<Props> = ({ className }) => {
     <>
       <AdCarousel className="absolute z-[10] top-0" />
 
-<header
-  className={cn(
-    "fixed top-0 w-full z-[50] flex flex-col items-center justify-center",
-    className,
-  )}
->
-  <div
-    className="flex relative z-[60] w-full max-w-[1440px]
-      backdrop-blur-md bg-black/70 px-10 max-lg:w-[80%]
-      outline outline-gray-100/15 rounded-br-4xl rounded-bl-4xl 
+      <header
+        className={cn(
+          "fixed top-0 w-full z-[50] flex flex-col items-center justify-center",
+          className,
+        )}
+      >
+        <div
+          className="flex relative z-[60] w-full max-w-[1440px]
+      backdrop-blur-sm bg-black/70 px-10 max-lg:w-[80%]
+      border border-gray-600/15 rounded-br-4xl rounded-bl-4xl 
       h-[100px]
       items-center justify-between"
-  >
+        >
           <div className="flex w-full items-center justify-between">
             <a href="." className="flex items-center nav-item h-full gap-2">
               <Image
@@ -82,51 +84,55 @@ export const Header: React.FC<Props> = ({ className }) => {
             </a>
 
             <div className="max-lg:flex hidden">
-              <button
-                className="flex-col w-full cursor-pointer"
-                onClick={() => setIsOpen(!isOpen)}
-                aria-label="Toggle menu"
-              >
-                {isOpen ? (
-                  <Image
-                    src="/header_img/close.svg"
-                    width={32}
-                    height={32}
-                    alt="Close"
-                  />
-                ) : (
-                  <Image
-                    src="/header_img/menu.svg"
-                    width={42}
-                    height={32}
-                    alt="Menu"
-                  />
-                )}
-              </button>
+              <>
+                <button
+                  className="flex-col w-full cursor-pointer"
+                  onClick={() => setIsOpen((prev) => !prev)}
+                  aria-label="Toggle menu"
+                >
+                  {isOpen ? (
+                    <Image
+                      src="/header_img/close.svg"
+                      width={32}
+                      height={32}
+                      alt="Close"
+                    />
+                  ) : (
+                    <Image
+                      src="/header_img/menu.svg"
+                      width={42}
+                      height={42}
+                      alt="Menu"
+                    />
+                  )}
+                </button>
+
+                {/* {isOpen && <NavItems_Modal onClose={() => setIsOpen(false)} />} */}
+              </>
             </div>
           </div>
-          <div className="lg:flex hidden h-full gap-10 text-lg justify-around p-5 text-center">
+          <div className="lg:flex hidden w-full h-full gap-10 text-lg justify-around p-5 text-center">
             {route.map((x) => (
               <li
-                className="flex flex-1 xl:w-40 w-29 nav-item outline outline-gray-100/15 rounded-full py-4 hover:bg-gray-700/15 cursor-pointer"
+                className="flex flex-1 xl:w-40 w-29 nav-item outline outline-gray-100/15 rounded-full py-4 hover:bg-gray-900/5 cursor-pointer bg-gray-700/10 active:scale-105 duration-300"
                 key={x.path}
               >
                 <a
                   className="flex items-center justify-center w-full h-full"
                   href={x.path}
                 >
-                  <p className="text-lg font-light">{x.name}</p>
+                  <p className="text-xl font-light">{x.name}</p>
                 </a>
               </li>
             ))}
             <button
-              onClick={() => {
-                location.href = "/";
-              }}
-              className="outline bg-gray-700/15 nav-item outline-gray-100/15 p-4 rounded-full whitespace-nowrap hover:bg-gray-700/30 cursor-grab font-light"
+              onClick={() => setIsOpen((prev) => !prev)}
+              className="bg-gray-500/5 text-white py-4 px-5 nav-item rounded-full outline outline-gray-100/15 hover:bg-gray-400/5 cursor-pointer duration-300 active:scale-95 flex items-center gap-2"
             >
-              Check In
+              <p className="text-xl font-light">Schedule</p>
             </button>
+
+            {isOpen && <SignUp_Modal onClose={() => setIsOpen(false)} />}
           </div>
         </div>
       </header>
