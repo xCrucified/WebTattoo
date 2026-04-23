@@ -9,7 +9,7 @@ import FallingStarSVG from "@/app/misc/falling-star_svg";
 import CarouselText from "@/app/components/ui/carouselFunc";
 import AdCarousel from "./ad-carousel";
 import { Sign } from "crypto";
-import { SignUp_Modal } from "../ui/sign-up";
+import { SignUp_Modal } from "../modal/sign-upModal";
 
 interface Props {
   className?: string;

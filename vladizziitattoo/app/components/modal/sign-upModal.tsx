@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Calendar } from "./calendar";
-import { Card, CardContent } from "./card";
+import { Calendar } from "../ui/calendar";
+import { Card, CardContent } from "../ui/card";
 import { cn } from "@/lib/utils";
-import ClaimModal from "../modal/claim_date";
+import ClaimModal from "./claim_dateModal";
 
 interface Props {
   className?: string;
