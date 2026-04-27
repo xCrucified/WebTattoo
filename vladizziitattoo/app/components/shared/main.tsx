@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 interface Props {
@@ -8,12 +8,21 @@ interface Props {
 }
 
 export const Main: React.FC<Props> = ({ className }) => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const mainElement = document.querySelector("main");
-      if (mainElement) {
-        mainElement.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollPosition = window.scrollY;
+          if (videoRef.current) {
+            videoRef.current.style.transform = `translateY(${scrollPosition * 0.4}px)`;
+          }
+          ticking = false;
+        });
+
+        ticking = true;
       }
     };
 
@@ -33,6 +42,7 @@ export const Main: React.FC<Props> = ({ className }) => {
           {/* Background video */}
 
           <video
+            ref={videoRef}
             className="absolute top-0 left-0 w-full h-full object-cover opacity-35"
             autoPlay
             loop
@@ -91,7 +101,19 @@ export const Main: React.FC<Props> = ({ className }) => {
         </div>
 
         {/* stage 2 photos */}
-        <div className=" w-full h-screen">asd</div>
+        <div className="w-full h-screen">
+          <div className="flex flex-row p-20 items-center justify-center w-full h-full">
+            <div className="outline-1 w-[24%] h-[90%] p-1 outline-red-500">
+              {/*array of photos */}
+            </div>
+            <div className="outline-1 p-3 w-[35%] h-full outline-green-500">
+              {/*array of photos */}
+            </div>
+            <div className="outline-1 h-[90%] p-1 w-[24%] outline-blue-500">
+              {/*array of photos */}
+            </div>
+          </div>
+        </div>
 
         {/* stage 3 about me + recent works */}
         <div></div>

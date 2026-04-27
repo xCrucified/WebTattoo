@@ -2,9 +2,9 @@ import Main from "./components/shared/main";
 import Footer from "./components/shared/footer";
 export default function Home() {
   return (
-    <div className="relative min-h-screen w-full">
+    <div className="relative w-full">
       <Main />
-      <Footer />
+      <Footer className="z-0"/>
     </div>
   );
 }

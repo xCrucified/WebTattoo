@@ -46,7 +46,7 @@ const route: Routes[] = [
 
 export const Footer: React.FC<Props> = ({ className }) => {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [, setSize] = useState({ width: 0, height: 0 });
+  const [size, setSize] = useState({ width: 0, height: 0 });
   useEffect(() => {
     if (!ref.current) return;
 
@@ -92,7 +92,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
               Available For Work
             </p>
           </div>
-          
+
           <div className="text-5xl text-center shimmer-text">
             Curious about what we can create together? Let’s bring something
             extraordinary to life!
@@ -106,13 +106,10 @@ export const Footer: React.FC<Props> = ({ className }) => {
     rounded-3xl
   text-white text-lg font-medium
     ring-1 ring-white/10
-
-    transition-all duration-200 ease-in-out
-    hover:ring-white/25
-    hover:scale-[1.02]
-    hover:bg-linear-to-r hover:from-neutral-900 hover:to-black
-    active:scale-[0.98]
-  "
+    hover:ring-1 hover:ring-white/20
+    active:ring-1 active:ring-white/30
+    transition duration-300
+  " 
           >
             Make an appointment
           </Button>
