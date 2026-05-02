@@ -10,6 +10,7 @@ import CarouselText from "@/app/components/ui/carouselFunc";
 import AdCarousel from "./ad-carousel";
 import { Sign } from "crypto";
 import { SignUp_Modal } from "../modal/sign-upModal";
+import { motion } from "framer-motion";
 
 interface Props {
   className?: string;
@@ -53,7 +54,10 @@ export const Header: React.FC<Props> = ({ className }) => {
     <>
       <AdCarousel className="absolute z-[10] top-0" />
 
-      <header
+      <motion.header
+        initial={{ y: "-100%", opacity: 0 }}
+        animate={{ y: -1, opacity: 1 }}
+        transition={{ duration: 0.33, ease: "easeInOut" }}
         className={cn(
           "fixed top-0 w-full z-[50] flex flex-col items-center justify-center",
           className,
@@ -135,7 +139,7 @@ export const Header: React.FC<Props> = ({ className }) => {
             {isOpen && <SignUp_Modal onClose={() => setIsOpen(false)} />}
           </div>
         </div>
-      </header>
+      </motion.header>
     </>
     // <header
     //   className={cn(

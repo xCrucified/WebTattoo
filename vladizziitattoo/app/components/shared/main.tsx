@@ -3,9 +3,11 @@ import { cn } from "@/lib/utils";
 import React, { useEffect, useRef } from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import { motion } from "framer-motion";
 interface Props {
   className?: string;
 }
+
 
 export const Main: React.FC<Props> = ({ className }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -49,10 +51,14 @@ export const Main: React.FC<Props> = ({ className }) => {
             muted
             playsInline
           >
-            <source src="/bg3hevc.mp4" type="video/mp4" />
+            <source src="/bg3.mp4" type="video/mp4" />
           </video>
           {/* Content */}
-          <div className="relative z-10 flex flex-col self-center items-center gap-5 text-center max-w-3xl w-full">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.33, ease: "easeInOut" }}
+            className="relative z-10 flex flex-col self-center items-center gap-5 text-center max-w-3xl w-full">
             {/* Badge */}
             <div className="inline-flex items-center gap-3 rounded-full px-5 py-4 bg-gradient-to-r from-neutral-900 to-black text-white border border-white/20">
               <div className="w-2 h-2 rounded-full bg-white animate-glow" />
@@ -97,7 +103,7 @@ export const Main: React.FC<Props> = ({ className }) => {
               <hr className="w-40 opacity-40 hidden sm:block" />
               <p className="w-40">to see projects</p>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* stage 2 photos */}
@@ -106,7 +112,7 @@ export const Main: React.FC<Props> = ({ className }) => {
             <div className="outline-1 w-[24%] h-[90%] p-1 outline-red-500">
               {/*array of photos */}
             </div>
-            <div className="outline-1 p-3 w-[35%] h-full outline-green-500">
+            <div className="outline-1 p-3 w-[31%] h-full outline-green-500">
               {/*array of photos */}
             </div>
             <div className="outline-1 h-[90%] p-1 w-[24%] outline-blue-500">
