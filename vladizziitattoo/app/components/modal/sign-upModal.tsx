@@ -18,7 +18,7 @@ export const SignUp_Modal: React.FC<Props> = ({ className }) => {
   return (
     <Card
       className={cn(
-        "absolute opacity-60 top-25 right-0 bg-black border-0",
+        "absolute opacity-60 top-20 right-0 bg-black border-0",
         className,
       )}
     >
@@ -37,7 +37,7 @@ export const SignUp_Modal: React.FC<Props> = ({ className }) => {
         />
         <button
           disabled={!date?.getDate()}
-          className="cursor-pointer disabled:cursor-not-allowed"
+          className="cursor-pointer disabled:cursor-not-allowed items-center w-full"
           onClick={() => {
             if (!date) return;
             const formatted = date.toLocaleDateString("sv-SE");

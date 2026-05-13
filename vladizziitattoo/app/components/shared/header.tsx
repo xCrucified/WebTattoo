@@ -1,281 +1,185 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 import AdCarousel from "./ad-carousel";
 import { SignUp_Modal } from "../modal/sign-upModal";
-import { motion } from "framer-motion";
 
 interface Props {
   className?: string;
 }
+
 interface Routes {
   name: string;
   path: string;
 }
 
-const route: Routes[] = [
-  {
-    name: "Home",
-    path: ".",
-  },
-  {
-    name: "Gallery",
-    path: "#gallery",
-  },
-  {
-    name: "About",
-    path: "#about",
-  },
-  {
-    name: "Testimonials",
-    path: "#testimonials",
-  },
+const routes: Routes[] = [
+  { name: "Home", path: "." },
+  { name: "Gallery", path: "#gallery" },
+  { name: "About", path: "#about" },
+  { name: "Testimonials", path: "#testimonials" },
 ];
 
 export const Header: React.FC<Props> = ({ className }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1280 /* px */) {
-        setIsOpen(false);
+      if (window.innerWidth >= 1280) {
+        setIsMenuOpen(false);
       }
     };
+
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [isOpen, setIsOpen]);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
-      <AdCarousel className="absolute z-10 top-0" />
+      <AdCarousel className="absolute top-0 z-10" />
 
       <motion.header
         initial={{ y: "-100%", opacity: 0 }}
-        animate={{ y: -1, opacity: 1 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.33, ease: "easeInOut" }}
         className={cn(
-          "fixed top-0 w-full z-50 flex flex-col items-center",
+          "fixed top-0 z-50 flex h-20 w-full justify-center px-4",
           className,
         )}
       >
         <div
-          className="flex relative z-60 w-full max-w-[75%] shadow-md
-      backdrop-blur-sm bg-black/70 px-10
-      border border-gray-600/15 rounded-br-4xl rounded-bl-4xl 
-
-      items-center justify-between"
+          className="
+            flex h-full w-full max-w-3xl items-center
+            rounded-4xl border border-gray-600/15
+            bg-black/70 px-6
+            shadow-md backdrop-blur-sm
+          "
         >
-          <div className="flex w-full items-center justify-between">
-            <a href="." className="flex items-center nav-item h-full gap-2">
-              <Image
-                src="/header_img/rose.svg"
-                alt="Vladizzi Tattoo Logo"
-                className="text-logo"
-                width={45}
-                height={45}
-              />
-              <h1
-                id="titel"
-                className="text-3xl font-medium text-logo max-xl:hidden self-center"
-              >
-                Vladizzii Tattoo
-              </h1>
-            </a>
+          {/* Logo */}
+          <a
+            href="."
+            className="nav-item flex h-full items-center justify-center"
+          >
+            <Image
+              src="/header_img/rose.svg"
+              alt="Vladizzi Tattoo Logo"
+              width={45}
+              height={45}
+            />
+          </a>
 
-            <div className="max-lg:flex hidden">
-              <>
-                <button
-                  className="flex-col w-full cursor-pointer"
-                  onClick={() => setIsOpen((prev) => !prev)}
-                  aria-label="Toggle menu"
-                >
-                  {isOpen ? (
-                    <Image
-                      src="/header_img/close.svg"
-                      width={32}
-                      height={32}
-                      alt="Close"
-                    />
-                  ) : (
-                    <Image
-                      src="/header_img/menu.svg"
-                      width={42}
-                      height={42}
-                      alt="Menu"
-                    />
-                  )}
-                </button>
+          {/* Spacer */}
+          <div className="flex-1" />
 
-                {/* {isOpen && <NavItems_Modal onClose={() => setIsOpen(false)} />} */}
-              </>
-            </div>
-          </div>
-          <div className="lg:flex hidden w-full h-full gap-10 text-lg justify-around p-5 text-center">
-            {route.map((x) => (
-              <li
-                className="flex flex-1 xl:w-40 w-29 nav-item outline outline-gray-100/15 rounded-full py-4 hover:bg-gray-900/5 cursor-pointer bg-gray-700/10 active:scale-105 duration-300"
-                key={x.path}
-              >
+          {/* Desktop nav */}
+          <ul className="hidden h-full items-center gap-3 lg:flex">
+            {routes.map((route) => (
+              <li key={route.path}>
                 <a
-                  className="flex items-center justify-center w-full h-full"
-                  href={x.path}
+                  href={route.path}
+                  className="
+                    nav-item flex items-center justify-center
+                    px-6 py-4 text-xl font-light
+                    duration-300 active:scale-105
+                  "
                 >
-                  <p className="text-xl font-light">{x.name}</p>
+                  {route.name}
                 </a>
               </li>
             ))}
-            <button
-              onClick={() => setIsOpen((prev) => !prev)}
-              className="bg-gray-500/5 text-white py-4 px-5 nav-item rounded-full outline outline-gray-100/15 hover:bg-gray-400/5 cursor-pointer duration-300 active:scale-95 flex items-center gap-2"
-            >
-              <p className="text-xl font-light">Schedule</p>
-            </button>
 
-            {isOpen && <SignUp_Modal onClose={() => setIsOpen(false)} />}
+            {/* Divider */}
+            <li>
+              <div className="h-10 w-px bg-white/10" />
+            </li>
+
+            {/* Schedule */}
+            <li>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="
+                  nav-item flex items-center justify-center
+                  px-6 py-4 text-xl font-light
+                  duration-300 active:scale-95
+                "
+              >
+                Schedule
+              </button>
+            </li>
+          </ul>
+
+          {/* Mobile menu button */}
+          <div className="flex lg:hidden">
+            <button
+              aria-label="Toggle menu"
+              onClick={() => setIsMenuOpen((prev) => !prev)}
+              className="flex items-center justify-center"
+            >
+              <Image
+                src={
+                  isMenuOpen ? "/header_img/close.svg" : "/header_img/menu.svg"
+                }
+                width={32}
+                height={32}
+                alt={isMenuOpen ? "Close menu" : "Open menu"}
+              />
+            </button>
           </div>
         </div>
+
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              className="
+                absolute top-24 w-[90%]
+                rounded-3xl border border-white/10
+                bg-black/90 p-6 backdrop-blur-xl
+                xl:hidden
+              "
+            >
+              <ul className="flex flex-col gap-4">
+                {routes.map((route) => (
+                  <li key={route.path}>
+                    <a
+                      href={route.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block text-lg font-light"
+                    >
+                      {route.name}
+                    </a>
+                  </li>
+                ))}
+
+                <button
+                  onClick={() => {
+                    setIsModalOpen(true);
+                    setIsMenuOpen(false);
+                  }}
+                  className="mt-4 text-left text-lg font-light"
+                >
+                  Schedule
+                </button>
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.header>
+
+      {isModalOpen && <SignUp_Modal onClose={() => setIsModalOpen(false)} />}
     </>
-    // <header
-    //   className={cn(
-    //     className,
-    //     "flex justify-around items-center max-w-[100%] shadow-md h-[100px]",
-    //     isOpen ? "bg-black" : "blur_drop_down",
-    //   )}
-    // >
-    //   <div className="flex items-center h-full">
-    // <a href="." className="flex items-center nav-item space-x-1 h-full">
-    //   <Image
-    //     src="/header_img/rose.svg"
-    //     alt="Vladizzi Tattoo Logo"
-    //     className="text-logo"
-    //     width={45}
-    //     height={45}
-    //   />
-    //   <h1 className="text-2xl font-medium text-logo">Vladizzii Tattoo</h1>
-    // </a>
-    //   </div>
-    //   <div className="flex items-center h-full">
-    //     {
-    //       <nav
-    //         className={`
-    //     ${isOpen ? "flex" : "hidden"}
-    //     xl:flex xl:relative xl:display-none hidden xl:bg-transparent
-    //     relative top-0
-    //     left-0 w-full
-    //     bg-[#121212]
-    //     flex-col lg:flex-row
-    //     text-xl z-40
-    //     h-[100%]
-    //     `}
-    //       >
-    //         <ul className="flex justify-around h-full gap-6">
-    //           {route.map((x) => (
-    //             <li className="flex flex-1 flex-shrink-0 nav-item" key={x.path}>
-    //               <a
-    //                 className="flex items-center justify-center w-full h-full"
-    //                 href={x.path}
-    //               >
-    //                 <p className="text-lg font-light">{x.name}</p>
-    //               </a>
-    //             </li>
-    //           ))}
-
-    //           <li className="flex flex-1 items-center justify-center ml-5">
-    //             <a
-    //               href="#register"
-    //               className="border-[#2a2a2a] bg-[#1212127f] w-[10rem] rounded-3xl border-[1px] px-4 py-2 hover:border-[#4b4b4b] duration-300"
-    //             >
-    //               <span className="flex items-center justify-center gap-1">
-    //                 <RoseSVG className="w-6 h-6" />
-    //                 <p className="font-light">Check In</p>
-    //               </span>
-    //             </a>
-    //           </li>
-    //         </ul>
-    //       </nav>
-    //     }
-
-    // <button
-    //   className="max-[1280px]:flex hidden flex-col h-8 w-8 justify-center items-center outline-none z-[60] cursor-pointer"
-    //   onClick={() => setIsOpen(!isOpen)}
-    //   aria-label="Toggle menu"
-    // >
-    //   {isOpen ? (
-    //     <Image
-    //       src="/header_img/close.svg"
-    //       width={26}
-    //       height={26}
-    //       alt="Close"
-    //     />
-    //   ) : (
-    //     <Image
-    //       src="/header_img/menu.svg"
-    //       width={32}
-    //       height={32}
-    //       alt="Menu"
-    //     />
-    //   )}
-    // </button>
-
-    //     <AnimatePresence>
-    //       {isOpen && (
-    //         <motion.div
-    //           initial={{ y: "-100%", opacity: 0 }}
-    //           animate={{ y: 0, opacity: 1 }}
-    //           exit={{ y: "-100%", opacity: 0 }}
-    //           transition={{ duration: 0.4, ease: "easeInOut" }}
-    //           className="fixed top-0 left-0 w-full z-50 bg-black xl:hidden blur_drop_down"
-    //         >
-    //           <div
-    //             className={`
-    //                 fixed inset-x-0 top-0 z-50 mt-[6rem] bg-black text-white xl:hidden
-    //                 grid transition-[grid-template-rows,opacity,visibility] duration-500 ease-in-out
-    //                 ${isOpen ? "grid-rows-[1fr] opacity-100 visible" : "grid-rows-[0fr] opacity-0 invisible"}
-    //               `}
-    //           >
-    //             <div className="">
-    //               <nav className="flex flex-col items-center py-8 w-full">
-    //                 <ul className="flex flex-col items-center gap-6 w-full text-2xl font-medium ml-18">
-    //                   {/* Home */}
-    //                   {route.map((x) => (
-    //                     <li className="w-full" key={x.path}>
-    //                       <a
-    //                         className="block py-3 hover:text-gray-400 transition-colors"
-    //                         href={x.path}
-    //                         onClick={() => setIsOpen(false)}
-    //                       >
-    //                         <p className="text-lg">{x.name}</p>
-    //                       </a>
-    //                     </li>
-    //                   ))}
-
-    //                   {/* Btn Check In */}
-    //                   <li className="self-start w-[14rem]">
-    //                     <a
-    //                       href="#register"
-    //                       onClick={() => setIsOpen(false)}
-    //                       className="flex items-center justify-center gap-2 border-[#2a2a2a] bg-[#1212127f] rounded-3xl border-[1px] px-8 py-3 hover:border-[#4b4b4b] transition-all duration-300 active:scale-95"
-    //                     >
-    //                       <FallingStarSVG />
-    //                       <span className="font-medium">Check In</span>
-    //                     </a>
-    //                   </li>
-    //                 </ul>
-    //               </nav>
-    //             </div>
-    //           </div>
-    //         </motion.div>
-    //       )}
-    //     </AnimatePresence>
-    //   </div>
-    // </header>
   );
 };
 
 export default Header;
-
-// ! x     m        x  !
-// 3 7 11 15 22 29 37 44
-// mid = [0+7/2] = 3

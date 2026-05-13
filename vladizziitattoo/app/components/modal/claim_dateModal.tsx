@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { createPortal } from "react-dom";
 
@@ -28,22 +27,6 @@ export const ClaimModal: React.FC<Props> = ({ className, date, onClose }) => {
 
   const isValidDate = parsedDate && !isNaN(parsedDate.getTime());
   return createPortal(
-    // <>
-    //   <div className="fixed flex items-center justify-center bg-black/50">
-    //     <div className={cn("bg-red-900 w-[500px] h-[500px]", className)}>
-    // <button onClick={onClose} className="absolute top-2 right-2">
-    //   X
-    // </button>
-
-    // {isValidDate ? (
-    //   <p>You have claimed the date: {parsedDate.toLocaleDateString()}</p>
-    // ) : (
-    //   <p>No valid date selected.</p>
-    // )}
-    //     </div>
-    //   </div>
-    // </>
-
     <div
       className={cn(
         "fixed flex items-center justify-center overscroll-y-none backdrop-blur-xs min-w-screen min-h-screen bg-black/20 inset-0 z-99999 overflow-y-hidden",
