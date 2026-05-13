@@ -27,7 +27,7 @@ const routes: Routes[] = [
 export const Header: React.FC<Props> = ({ className }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const isSomethingOpen = isMenuOpen || isModalOpen;
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1280) {
@@ -57,7 +57,7 @@ export const Header: React.FC<Props> = ({ className }) => {
       >
         <div
           className="
-            flex h-full w-full max-w-3xl items-center
+            flex h-full w-full max-w-3xl max-lg:max-w-xl items-center
             rounded-4xl border border-gray-600/15
             bg-black/70 px-6
             shadow-md backdrop-blur-sm
@@ -104,7 +104,7 @@ export const Header: React.FC<Props> = ({ className }) => {
             {/* Schedule */}
             <li>
               <button
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => setIsModalOpen((prev) => !prev)}
                 className="
                   nav-item flex items-center justify-center
                   px-6 py-4 text-xl font-light
@@ -120,17 +120,26 @@ export const Header: React.FC<Props> = ({ className }) => {
           <div className="flex lg:hidden">
             <button
               aria-label="Toggle menu"
-              onClick={() => setIsMenuOpen((prev) => !prev)}
+              onClick={() => {
+                if (isModalOpen) {
+                  setIsModalOpen(false);
+                  return;
+                }
+
+                setIsMenuOpen((prev) => !prev);
+              }}
               className="flex items-center justify-center"
             >
               <Image
-                src={
-                  isMenuOpen ? "/header_img/close.svg" : "/header_img/menu.svg"
-                }
-                width={32}
-                height={32}
-                alt={isMenuOpen ? "Close menu" : "Open menu"}
-              />
+  src={
+    isSomethingOpen
+      ? "/header_img/close.svg"
+      : "/header_img/menu.svg"
+  }
+  width={32}
+  height={32}
+  alt={isSomethingOpen ? "Close menu" : "Open menu"}
+/>
             </button>
           </div>
         </div>
@@ -143,10 +152,10 @@ export const Header: React.FC<Props> = ({ className }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               className="
-                absolute top-24 w-[90%]
+                absolute top-24 w-[70%]
                 rounded-3xl border border-white/10
                 bg-black/90 p-6 backdrop-blur-xl
-                xl:hidden
+                lg:hidden
               "
             >
               <ul className="flex flex-col gap-4">
@@ -164,7 +173,7 @@ export const Header: React.FC<Props> = ({ className }) => {
 
                 <button
                   onClick={() => {
-                    setIsModalOpen(true);
+                    setIsModalOpen((prev) => !prev);
                     setIsMenuOpen(false);
                   }}
                   className="mt-4 text-left text-lg font-light"
@@ -174,10 +183,14 @@ export const Header: React.FC<Props> = ({ className }) => {
               </ul>
             </motion.div>
           )}
+          {isModalOpen && (
+            <SignUp_Modal
+              className="absolute items-center"
+              onClose={() => setIsModalOpen(false)}
+            />
+          )}
         </AnimatePresence>
       </motion.header>
-
-      {isModalOpen && <SignUp_Modal onClose={() => setIsModalOpen(false)} />}
     </>
   );
 };
