@@ -19,7 +19,7 @@ export const Main: React.FC<Props> = ({ className }) => {
         window.requestAnimationFrame(() => {
           const scrollPosition = window.scrollY;
           if (videoRef.current) {
-            videoRef.current.style.transform = `translateY(${scrollPosition * 0.4}px)`;
+            videoRef.current.style.transform = `translateY(${scrollPosition * 0.5}px)`;
           }
           ticking = false;
         });
@@ -40,7 +40,7 @@ export const Main: React.FC<Props> = ({ className }) => {
     >
       <div className="relative z-10 w-full flex flex-col items-center">
         {/* stage 1 */}
-        <div className="relative flex flex-col items-center justify-center h-[100dvh] w-full px-6 overflow-hidden">
+        <div className="relative flex flex-col items-center justify-center h-dvh w-full px-6 overflow-hidden">
           {/* Background video */}
 
           <video

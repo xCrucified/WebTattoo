@@ -1,14 +1,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useEffect } from "react";
-import RoseSVG from "@/app/misc/rose_svg";
-import FallingStarSVG from "@/app/misc/falling-star_svg";
-import CarouselText from "@/app/components/ui/carouselFunc";
 import AdCarousel from "./ad-carousel";
-import { Sign } from "crypto";
 import { SignUp_Modal } from "../modal/sign-upModal";
 import { motion } from "framer-motion";
 
@@ -52,22 +48,22 @@ export const Header: React.FC<Props> = ({ className }) => {
   }, [isOpen, setIsOpen]);
   return (
     <>
-      <AdCarousel className="absolute z-[10] top-0" />
+      <AdCarousel className="absolute z-10 top-0" />
 
       <motion.header
         initial={{ y: "-100%", opacity: 0 }}
         animate={{ y: -1, opacity: 1 }}
         transition={{ duration: 0.33, ease: "easeInOut" }}
         className={cn(
-          "fixed top-0 w-full z-[50] flex flex-col items-center justify-center",
+          "fixed top-0 w-full z-50 flex flex-col items-center",
           className,
         )}
       >
         <div
-          className="flex relative z-[60] w-full max-w-[1440px]
-      backdrop-blur-sm bg-black/70 px-10 max-lg:w-[80%]
+          className="flex relative z-60 w-full max-w-[75%] shadow-md
+      backdrop-blur-sm bg-black/70 px-10
       border border-gray-600/15 rounded-br-4xl rounded-bl-4xl 
-      h-[100px]
+
       items-center justify-between"
         >
           <div className="flex w-full items-center justify-between">
@@ -81,7 +77,7 @@ export const Header: React.FC<Props> = ({ className }) => {
               />
               <h1
                 id="titel"
-                className="text-3xl font-medium text-logo max-sm:hidden"
+                className="text-3xl font-medium text-logo max-xl:hidden self-center"
               >
                 Vladizzii Tattoo
               </h1>
