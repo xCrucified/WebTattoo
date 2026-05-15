@@ -58,7 +58,7 @@ export const Header: React.FC<Props> = ({ className }) => {
         <div
           className="
             flex h-full w-full max-w-3xl max-lg:max-w-xl items-center
-            rounded-4xl border border-gray-600/15
+            rounded-4xl border-2 border-gray-600/15
             bg-black/70 px-6
             shadow-md backdrop-blur-sm
           "

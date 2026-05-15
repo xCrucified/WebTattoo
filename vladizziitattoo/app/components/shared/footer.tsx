@@ -1,6 +1,7 @@
 "use client";
+
 import { cn } from "@/lib/utils";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,11 +18,12 @@ interface Routes {
   width: number;
   height: number;
 }
-const route: Routes[] = [
+
+const routes: Routes[] = [
   {
     id: 0,
     img: "/footer_img/instagram.svg",
-    alt: "instagram image",
+    alt: "Instagram",
     link: "https://www.instagram.com/vladizzii.tattoo?igsh=ZmUwaWp6MzYxbm51",
     width: 25,
     height: 25,
@@ -29,7 +31,7 @@ const route: Routes[] = [
   {
     id: 1,
     img: "/footer_img/facebook.svg",
-    alt: "facebook image",
+    alt: "Facebook",
     link: "https://www.facebook.com/share/1F3oGWSjBF/?mibextid=wwXIfr",
     width: 25,
     height: 25,
@@ -37,87 +39,122 @@ const route: Routes[] = [
   {
     id: 2,
     img: "/footer_img/tiktok.svg",
-    alt: "tiktok image",
+    alt: "TikTok",
     link: "https://www.tiktok.com/@vladizzii.tattoo?_r=1&_t=ZN-93ccDy1o2aM",
     width: 25,
     height: 25,
   },
 ];
 
-export const Footer: React.FC<Props> = ({ className }) => {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [size, setSize] = useState({ width: 0, height: 0 });
-  useEffect(() => {
-    if (!ref.current) return;
-
-    const observer = new ResizeObserver(([entry]) => {
-      const { width, height } = entry.contentRect;
-      setSize({
-        width: Math.round(width),
-        height: Math.round(height),
-      });
-    });
-
-    observer.observe(ref.current);
-
-    return () => observer.disconnect();
-  }, []);
+export const Footer: React.FC<Props> = ({
+  className,
+}) => {
+  
   return (
     <footer
       className={cn(
-        className,
-        "relative flex justify-between items-center flex-col bottom-0 w-full h-screen bg-[#000000]",
+        "relative overflow-hidden bg-black",
+        className
       )}
     >
-      {/*  */}
-      <div className="flex flex-col items-center justify-center w-full h-full mb-20 mt-60">
-        <div className="flex flex-col items-center justify-center w-[80%] h-full gap-15">
+      {/* Background video */}
+      <video
+        className="
+          absolute inset-0
+          h-full w-full object-cover
+          opacity-20
+        "
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src="/bg3.mp4" type="video/mp4" />
+      </video>
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/10" />
+
+      {/* Content */}
+      <div
+        className="
+          relative z-10
+          flex flex-col items-center
+          px-6 py-32
+        "
+      >
+        <div
+          className="
+            flex w-full max-w-5xl
+            flex-col items-center
+            gap-12
+          "
+        >
+          {/* Available badge */}
           <div
             className="
-  inline-flex items-center gap-4
-  rounded-full px-6 py-5
-  bg-linear-to-r from-neutral-900 to-black
-  text-white
-  border-l-[0.5px] border-white/30
-"
+              inline-flex items-center gap-4
+              rounded-full border-l border-white/30
+              bg-gradient-to-r from-neutral-900 to-black
+              px-6 py-5 text-white
+            "
           >
             <div
               className="
-    w-3 h-3 rounded-full bg-white animate-glow
-    shadow-[0_0_10px_rgba(255,255,255,0.9)]
-  "
+                h-3 w-3 rounded-full bg-white
+                shadow-[0_0_10px_rgba(255,255,255,0.9)]
+                animate-pulse
+              "
             />
 
-            <p className="text-2xl font-medium tracking-wide">
+            <p className="text-lg font-medium md:text-2xl">
               Available For Work
             </p>
           </div>
 
-          <div className="text-5xl text-center shimmer-text">
-            Curious about what we can create together? Let’s bring something
-            extraordinary to life!
-          </div>
-          <Button
-            onClick={() => (window.location.href = "/booking")}
+          {/* Title */}
+          <h2
             className="
-    relative
-    flex items-center justify-center
-    h-16.25 w-65
-    rounded-3xl
-  text-white text-lg font-medium
-    ring-1 ring-white/10
-    hover:ring-1 hover:ring-white/20
-    active:ring-1 active:ring-white/30
-    transition duration-300
-  " 
+              max-w-4xl text-center
+              text-3xl font-light leading-tight
+              text-white
+              md:text-5xl
+            "
           >
-            Make an appointment
-          </Button>
+            Curious about what we can create
+            together? Let’s bring something
+            extraordinary to life.
+          </h2>
 
-          <div className="flex items-center gap-5 mb-10">
-            {route.map((x, index) => (
-              <div className="flex gap-5 items-center" key={x.id}>
-                <a href={x.link}>
+          {/* CTA */}
+          <Link href="/booking">
+            <Button
+              className="
+                h-16 w-64 rounded-3xl
+                text-lg font-medium text-white
+                ring-1 ring-white/10
+                transition duration-300
+                hover:ring-white/20
+                active:ring-white/30
+              "
+            >
+              Make an appointment
+            </Button>
+          </Link>
+
+          {/* Socials */}
+          <div className="flex items-center gap-5">
+            {routes.map((x, index) => (
+              <React.Fragment key={x.id}>
+                <a
+                  href={x.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    transition-opacity duration-300
+                    hover:opacity-70
+                  "
+                >
                   <Image
                     src={x.img}
                     alt={x.alt}
@@ -126,30 +163,37 @@ export const Footer: React.FC<Props> = ({ className }) => {
                   />
                 </a>
 
-                {index !== route.length - 1 && (
-                  <hr className="h-6 border-0 border-l border-white/30" />
+                {index !== routes.length - 1 && (
+                  <div className="h-6 w-px bg-white/30" />
                 )}
-              </div>
+              </React.Fragment>
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-3 w-full items-center text-white/70 text-center font-light text-sm">
-          <div>
-            <Link href="/privacy-policy">Privacy Policy</Link>
-          </div>
-          <div>
-            Developed by{" "}
-            <a
-              href="https://your-portfolio.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              xCrucified
-            </a>
-          </div>
-          <div>
-            <a href="_blank">All rights reserved </a> © 2026
-          </div>
+
+        {/* Bottom */}
+        <div
+          className="
+            relative z-10 mt-20
+            grid w-full max-w-6xl
+            gap-4 text-center
+            text-sm font-light text-white/60
+            md:grid-cols-3
+          "
+        >
+          <Link href="/privacy-policy">
+            Privacy Policy
+          </Link>
+
+          <a
+            href="https://your-portfolio.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Developed by xCrucified
+          </a>
+
+          <p>All rights reserved © 2026</p>
         </div>
       </div>
     </footer>
