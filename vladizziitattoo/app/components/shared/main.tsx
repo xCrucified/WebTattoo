@@ -50,6 +50,7 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
             ref={videoRef}
             className="absolute top-0 left-0 w-full h-full object-cover opacity-35"
             autoPlay
+            poster="/fallback-image.jpg"
             loop
             muted
             playsInline
