@@ -1,17 +1,23 @@
 import { cn } from '@/lib/utils';
 import React from 'react';
-import Image from 'next/image';
+
 interface Props {
   className?: string;
-  images: string[];
+  src: string; 
+  alt?: string;
 }
 
-export const CardImage: React.FC<Props> = ({ className, images }) => {
+export const CardImage: React.FC<Props> = ({ className, src, alt = "Tattoo work" }) => {
+  console.log("CardImage пытается отрендерить:", src);
+
   return (
-    <div className={cn("w-full h-full object-cover", className)}>
-      {images.map((src, index) => (
-        <Image key={index} src={src} alt={`Image ${index + 1}`} className="w-full h-full object-cover" />
-      ))}
+    <div className={cn("relative w-full h-full overflow-hidden", className)}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img 
+        src={src} 
+        alt={alt} 
+        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
+      />
     </div>
   );
 };

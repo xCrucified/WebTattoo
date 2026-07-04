@@ -4,12 +4,14 @@ import React, { useEffect, useRef } from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import CardImage from "../card_img/card";
+
 interface Props {
   className?: string;
+  images?: { id: number; imageUrl: string }[];
 }
 
-
-export const Main: React.FC<Props> = ({ className }) => {
+export const Main: React.FC<Props> = ({ className, images = [] }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   useEffect(() => {
     let ticking = false;
@@ -58,7 +60,8 @@ export const Main: React.FC<Props> = ({ className }) => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.33, ease: "easeInOut" }}
-            className="relative z-10 flex flex-col self-center items-center gap-5 text-center max-w-3xl w-full">
+            className="relative z-10 flex flex-col self-center items-center gap-5 text-center max-w-3xl w-full"
+          >
             {/* Badge */}
             <div className="inline-flex items-center gap-3 rounded-full px-5 py-4 bg-gradient-to-r from-neutral-900 to-black text-white border border-white/20">
               <div className="w-2 h-2 rounded-full bg-white animate-glow" />
@@ -110,13 +113,22 @@ export const Main: React.FC<Props> = ({ className }) => {
         <div className="w-full h-screen">
           <div className="flex flex-row p-20 items-center justify-center w-full h-full">
             <div className="outline-1 w-[24%] h-[90%] p-1 outline-red-500">
-              {/*array of photos */}
+              {/* Если первая картинка есть в базе, выводим её */}
+              {images.length > 0 ? (
+                <CardImage src={images[0].imageUrl} />
+              ) : (
+                <p className="text-sm text-center mt-10">Нет фото</p>
+              )}
             </div>
+            
             <div className="outline-1 p-3 w-[31%] h-full outline-green-500">
-              {/*array of photos */}
+              {/* Для второй картинки */}
+              {images.length > 1 && <CardImage src={images[1].imageUrl} />}
             </div>
+            
             <div className="outline-1 h-[90%] p-1 w-[24%] outline-blue-500">
-              {/*array of photos */}
+              {/* Для третьей картинки */}
+              {images.length > 2 && <CardImage src={images[2].imageUrl} />}
             </div>
           </div>
         </div>
