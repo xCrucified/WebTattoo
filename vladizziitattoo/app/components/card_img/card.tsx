@@ -13,8 +13,7 @@ export const CardImage: React.FC<Props> = ({
   src,
   alt = "Tattoo work",
 }) => {
-  console.log("CardImage рендерит:", src);
-  
+
   return (
     <div className={cn("relative w-full h-full overflow-hidden", className)}>
       <div className="relative w-full h-full"> 

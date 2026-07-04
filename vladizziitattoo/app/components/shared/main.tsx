@@ -33,6 +33,7 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  console.log("Пришедшие картинки в Main:", images); // <--- СМОТРИ КОНСОЛЬ БРАУЗЕРА (F12)
   return (
     <main
       className={cn(
@@ -111,24 +112,23 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
 
         {/* stage 2 photos */}
         <div className="w-full h-screen">
-          <div className="flex flex-row p-20 items-center justify-center w-full h-full">
-            <div className="outline-1 w-[24%] h-[90%] p-1 outline-red-500">
-              {/* Если первых трёх картинок есть в базе, выводим их */}
-              {images.length > 0 ? (
-                <CardImage src={images[0].imageUrl} />
-              ) : (
-                <p className="text-sm text-center mt-10">Нет фото</p>
-              )}
+          <div className="flex flex-row p-20 items-center justify-center w-full h-full gap-4">
+            <div className="flex flex-col w-[24%] h-[90%] p-1 outline outline-1 outline-red-500 gap-2">
+              {images.slice(0, 3).map((img) => (
+                <CardImage key={img.id} src={img.imageUrl} />
+              ))}
             </div>
-            
-            <div className="outline-1 p-3 w-[31%] h-full outline-green-500">
-              {/* Для второй трёх картинок */}
-              {images.length > 1 && <CardImage src={images[1].imageUrl} />}
+
+            <div className="flex flex-col w-[31%] h-full p-3 outline outline-1 outline-green-500 gap-2">
+              {images.slice(3, 6).map((img) => (
+                <CardImage key={img.id} src={img.imageUrl} />
+              ))}
             </div>
-            
-            <div className="outline-1 h-[90%] p-1 w-[24%] outline-blue-500">
-              {/* Для третьих трёх картинок */}
-              {images.length > 2 && <CardImage src={images[2].imageUrl} />}
+
+            <div className="flex flex-col w-[24%] h-[90%] p-1 outline outline-1 outline-blue-500 gap-2">
+              {images.slice(6, 9).map((img) => (
+                <CardImage key={img.id} src={img.imageUrl} />
+              ))}
             </div>
           </div>
         </div>
