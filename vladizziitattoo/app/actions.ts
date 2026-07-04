@@ -5,6 +5,7 @@ import { put } from '@vercel/blob';
 import { revalidatePath } from 'next/cache';
 
 export async function uploadGalleryImage(formData: FormData) {
+  
   const file = formData.get('image') as File;
   const galleryId = Number(formData.get('galleryId'));
 
