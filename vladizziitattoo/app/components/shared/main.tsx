@@ -113,7 +113,7 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
         <div className="w-full h-screen">
           <div className="flex flex-row p-20 items-center justify-center w-full h-full">
             <div className="outline-1 w-[24%] h-[90%] p-1 outline-red-500">
-              {/* Если первая картинка есть в базе, выводим её */}
+              {/* Если первых трёх картинок есть в базе, выводим их */}
               {images.length > 0 ? (
                 <CardImage src={images[0].imageUrl} />
               ) : (
@@ -122,12 +122,12 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
             </div>
             
             <div className="outline-1 p-3 w-[31%] h-full outline-green-500">
-              {/* Для второй картинки */}
+              {/* Для второй трёх картинок */}
               {images.length > 1 && <CardImage src={images[1].imageUrl} />}
             </div>
             
             <div className="outline-1 h-[90%] p-1 w-[24%] outline-blue-500">
-              {/* Для третьей картинки */}
+              {/* Для третьих трёх картинок */}
               {images.length > 2 && <CardImage src={images[2].imageUrl} />}
             </div>
           </div>
