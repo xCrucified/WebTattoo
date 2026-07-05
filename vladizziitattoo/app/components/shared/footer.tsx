@@ -46,24 +46,18 @@ const routes: Routes[] = [
   },
 ];
 
-export const Footer: React.FC<Props> = ({
-  className,
-}) => {
-  
+export const Footer: React.FC<Props> = ({ className }) => {
   return (
-    <footer
-      className={cn(
-        "relative overflow-hidden bg-black",
-        className
-      )}
-    >
+    <footer className={cn("relative overflow-hidden bg-black", className)}>
+      <div className="absolute top-0 left-0 w-full h-54 bg-linear-to-t from-0% to-black pointer-events-none z-20" />
       {/* Background video */}
       <video
         className="
-          absolute inset-0
-          h-full w-full object-cover
-          opacity-20
-        "
+    absolute inset-0
+    h-full w-full object-cover
+    opacity-20
+    grayscale
+  "
         autoPlay
         loop
         muted
@@ -121,8 +115,7 @@ export const Footer: React.FC<Props> = ({
               md:text-5xl
             "
           >
-            Curious about what we can create
-            together? Let’s bring something
+            Curious about what we can create together? Let’s bring something
             extraordinary to life.
           </h2>
 
@@ -181,12 +174,10 @@ export const Footer: React.FC<Props> = ({
             md:grid-cols-3
           "
         >
-          <Link href="/privacy-policy">
-            Privacy Policy
-          </Link>
+          <Link href="/privacy-policy">Privacy Policy</Link>
 
           <a
-            href="https://your-portfolio.com"
+            href="https://xcrucified.cloud"
             target="_blank"
             rel="noopener noreferrer"
           >

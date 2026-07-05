@@ -1,18 +1,41 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { cn } from "@/lib/utils";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import CardImage from "../card_img/card";
+import { Image_Modal } from "../modal/image_modal";
 
 interface Props {
   className?: string;
   images?: { id: number; imageUrl: string }[];
 }
 
+const about_me_text = `Hi! I'm Vlada, a tattoo artist turning your ideas into meaningful, long-lasting tattoos. Every piece is a personal story crafted with strict attention to detail. Your safety is my priority, so I use only sterile, single-use equipment in a clean, professional environment. I offer a personalized approach from custom design to complete aftercare, ensuring you get a tattoo you'll proudly wear forever.
+If you're looking for quality, professionalism, a personalized experience, and a welcoming atmosphere, I'd be happy to bring your vision to life.`;
+
+const skills = [
+  "Tattoo Design",
+  "Color Tattooing",
+  "Lettering",
+  "Cover-ups",
+  "Geometric Tattoos",
+  "Watercolor Tattoos",
+  "Neotribal Tattoos",
+  "Japanese Style",
+  "Minimalist Tattoos",
+  "Dotwork",
+  "Surrealism",
+];
+
 export const Main: React.FC<Props> = ({ className, images = [] }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [selectedImage, setSelectedImage] = useState<{
+    id: number;
+    imageUrl: string;
+  } | null>(null);
   useEffect(() => {
     let ticking = false;
 
@@ -33,7 +56,7 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  console.log("Пришедшие картинки в Main:", images); // <--- СМОТРИ КОНСОЛЬ БРАУЗЕРА (F12)
+  console.log("image in main:", images);
   return (
     <main
       className={cn(
@@ -109,33 +132,105 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
               <p className="w-40">to see projects</p>
             </div>
           </motion.div>
+          <div className="absolute bottom-0 left-0 w-full h-84 bg-linear-to-b from-transparent to-black pointer-events-none z-20" />
         </div>
-
         {/* stage 2 photos */}
-        <div className="w-full h-screen">
-          <div className="flex flex-row p-20 items-center justify-center w-full h-full gap-4">
-            <div className="flex flex-col w-[24%] h-[90%] p-1 outline outline-1 outline-red-500 gap-2">
+
+        <div className="flex flex-col justify-around items-center w-full h-[140vh]">
+          <div className="flex flex-row p-20 items-center justify-center w-full h-full inset-0">
+            <div className="flex flex-col w-[24%] h-245 p-1 gap-2
+                            max-xl:w-[50%] max-xl:h-275 max-lg:p-3">
               {images.slice(0, 3).map((img) => (
-                <CardImage key={img.id} src={img.imageUrl} />
+                <CardImage
+                  key={img.id}
+                  src={img.imageUrl}
+                  onClick={() => {
+                    setSelectedImage(img);
+                  }}
+                />
               ))}
             </div>
 
-            <div className="flex flex-col w-[31%] h-full p-3 outline outline-1 outline-green-500 gap-2">
+            <div className="flex flex-col w-[31%] h-275 p-3 gap-2
+                            max-xl:hidden">
               {images.slice(3, 6).map((img) => (
-                <CardImage key={img.id} src={img.imageUrl} />
+                <CardImage
+                  key={img.id}
+                  src={img.imageUrl}
+                  onClick={() => setSelectedImage(img)}
+                />
               ))}
             </div>
 
-            <div className="flex flex-col w-[24%] h-[90%] p-1 outline outline-1 outline-blue-500 gap-2">
+            <div className="flex flex-col w-[24%] h-245 p-1 gap-2
+                            max-xl:w-[50%] max-xl:h-275 max-lg:p-3">
               {images.slice(6, 9).map((img) => (
-                <CardImage key={img.id} src={img.imageUrl} />
+                <CardImage
+                  key={img.id}
+                  src={img.imageUrl}
+                  onClick={() => setSelectedImage(img)}
+                />
               ))}
             </div>
+          </div>
+          <div className="flex justify-center items-center gap-4 text-lg">
+            <a href="#" className="underline font-light">
+              All Projects
+            </a>
+            <button
+              onClick={() => {
+                console.log("Book a Free Consultation clicked");
+              }}
+              className="relative inline-flex p-px bg-linear-to-tr from-black via-white/30 to-white rounded-[20px] transition-transform duration-300 active:scale-95"
+            >
+              <div className="px-3 py-2 bg-black rounded-[19px] w-full h-full flex items-center justify-center hover:bg-[#0a0a0a] transition-colors duration-300">
+                <span className="text-white font-light">
+                  Book a Free Consultation
+                </span>
+              </div>
+            </button>
           </div>
         </div>
 
         {/* stage 3 about me + recent works */}
-        <div></div>
+        <div className="w-full h-screen">
+          <div className="flex w-[90%] h-[80%] items-center justify-center mx-auto gap-40">
+            <div className="flex flex-col w-[45%] justify-center text-start">
+              <h1 className="text-7xl font-light text-white">Meet Vlada</h1>
+              <p className="mt-5 text-lg text-gray-100/75">
+                {about_me_text}
+              </p>
+              <hr className="w-full h-px border-gray-400/10 rounded-full mt-4 mb-4" />
+              <div className="flex flex-wrap gap-4">
+                {skills.map((skill, index) => (
+                  <span
+                    key={index}
+                    className="px-4 py-2 bg-white/5 text-white/70 rounded-md text-sm font-light"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+              <hr className="w-full h-px border-gray-400/10 rounded-full mt-4 mb-4" />
+              <div className="flex min-w-full flex-col items-start text-xl gap-8">
+                <div className="flex w-full justify-between flex-row gap-2">
+                  <p className="text-gray-100/65">Tattoo Artist</p>
+                  <p className="text-gray-100/65">Tatooruffka</p>
+                  <p className="text-gray-100/65">2025 - Currently</p>
+                </div>
+              </div>
+              <hr className="w-full h-px border-gray-400/10 rounded-full mt-4 mb-4" />
+              
+            </div>
+            <div className="flex w-[25%] items-center justify-center">
+              <img
+                src={"./main_img/photo_5355173969113325595_x.jpg"}
+                alt="Profile"
+                className="w-full h-full object-fill"
+              />
+            </div>
+          </div>
+        </div>
 
         {/* stage 4 process */}
         <div></div>
@@ -149,6 +244,12 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
         {/* stage 7 answers (optional) */}
         <div></div>
       </div>
+      {selectedImage && (
+        <Image_Modal
+          image={selectedImage}
+          onClose={() => setSelectedImage(null)}
+        />
+      )}
     </main>
   );
 };
