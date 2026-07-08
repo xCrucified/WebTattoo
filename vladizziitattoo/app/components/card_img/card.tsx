@@ -18,7 +18,7 @@ export const CardImage: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        "relative w-full h-full overflow-hidden cursor-pointer",
+        "relative w-full h-full overflow-hidden cursor-pointer border border-gray-300/15",
         className
       )}
       onClick={onClick}
@@ -28,7 +28,7 @@ export const CardImage: React.FC<Props> = ({
           src={src}
           alt={alt}
           className="w-full h-full object-cover transition-all duration-300 ease-in-out transform 
-                     grayscale-100 hover:grayscale-0 hover:scale-105" 
+                     grayscale-100 hover:grayscale-0 hover:scale-105 " 
         />
       </div>
     </div>
