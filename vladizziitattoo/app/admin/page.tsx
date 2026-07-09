@@ -15,7 +15,7 @@ export default async function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-black text-white p-10 mt-20">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto ">
         <div className="flex justify-between items-center mb-10">
           <h1 className="text-3xl font-bold">Admin Dashboard</h1>
           <Link href="/" className="text-zinc-400 hover:text-white underline">
@@ -26,11 +26,11 @@ export default async function AdminDashboard() {
         <CreateButton />
 
         <h2 className="text-xl mb-4">Images ({images.length})</h2>
-        <div className="flex flex-wrap shrink-0 w-full h-full gap-4 mb-10">
+        <div className="flex flex-wrap items-center justify-center shrink-0 w-full h-full gap-4 mb-10">
           {images.map((img) => (
             <div
               key={img.id}
-              className="relative aspect-square bg-zinc-800 rounded overflow-hidden w-70 h-70"
+              className="relative aspect-square bg-zinc-800 outline-gray-400/25 outline rounded overflow-hidden w-70 h-70"
             >
               <img
                 src={img.imageUrl}
