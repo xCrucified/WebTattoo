@@ -25,13 +25,13 @@ export const CreateButton: React.FC<Props> = ({ className }) => {
 
   return (
     <div className={cn(className, "bg-zinc-900 p-6 rounded-lg border border-zinc-800 mb-10")}>
-      <h2 className="text-xl mb-4">Add New Image</h2>
-      <form action={handleSubmit} className="flex gap-4 items-center">
+      <h2 className="text-xl max-md:text-sm mb-4">Add New Image</h2>
+      <form action={handleSubmit} className="flex gap-4 max-md:flex-col items-center">
         <input type="file" name="image" accept="image/*" required className="flex w-full bg-zinc-800 p-2 rounded cursor-pointer" />
         <button 
           type="submit" 
           disabled={loading}
-          className="px-6 py-2 bg-white text-black font-bold rounded hover:bg-zinc-200 transition"
+          className="flex whitespace-nowrap px-2 py-1 bg-white max-md:text-sm text-black font-normal rounded hover:bg-zinc-400 active:scale-95 transition"
         >
           {loading ? 'Uploading...' : 'Upload Image'}
         </button>
