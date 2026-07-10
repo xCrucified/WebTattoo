@@ -202,7 +202,7 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
           >
             <div
               className="flex flex-col w-[50%] justify-center text-start
-                      max-xl:w-[70%]"
+                      max-xl:min-w-[95%]"
             >
               <h1 className="text-7xl font-light text-white">Meet Vlada</h1>
               <p className="mt-5 text-lg text-gray-100/75">{about_me_text}</p>
@@ -233,7 +233,7 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
             </div>
             <div
               className="flex w-[35%] items-center justify-center
-                      max-xl:w-[55%] max-xl:mt-10"
+                      max-xl:w-[65%] max-xl:mt-10"
             >
               <img
                 src={"./main_img/photo_5355173969113325595_x.jpg"}
