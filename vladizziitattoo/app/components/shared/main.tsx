@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { cn } from "@/lib/utils";
@@ -7,14 +8,14 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import CardImage from "../card_img/card";
 import { Image_Modal } from "../modal/image_modal";
+import Background from "../ui/background";
 
 interface Props {
   className?: string;
   images?: { id: number; imageUrl: string }[];
 }
 
-const about_me_text = `Hi! I'm Vlada, a tattoo artist turning your ideas into meaningful, long-lasting tattoos. Every piece is a personal story crafted with strict attention to detail. Your safety is my priority, so I use only sterile, single-use equipment in a clean, professional environment. I offer a personalized approach from custom design to complete aftercare, ensuring you get a tattoo you'll proudly wear forever.
-If you're looking for quality, professionalism, a personalized experience, and a welcoming atmosphere, I'd be happy to bring your vision to life.`;
+const about_me_text = `Hi, I'm Vlada! I craft custom, meaningful tattoos with strict attention to detail. Working in a sterile, welcoming environment, I provide a personalized experience from initial design to complete aftercare. Let's bring your vision to life.`;
 
 const skills = [
   "Tattoo Design",
@@ -22,12 +23,17 @@ const skills = [
   "Lettering",
   "Cover-ups",
   "Geometric Tattoos",
-  "Watercolor Tattoos",
   "Neotribal Tattoos",
   "Japanese Style",
   "Minimalist Tattoos",
   "Dotwork",
   "Surrealism",
+];
+
+const workflow = [
+  ["Tattoo Artist", "Tatooruffka", "Currently"],
+  ["Cover-ups", "Reworking old tattoos", "On Request"],
+  ["Flash Designs", "Ready-to-ink Concepts", "Available"],
 ];
 
 export const Main: React.FC<Props> = ({ className, images = [] }) => {
@@ -68,18 +74,8 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
         {/* stage 1 */}
         <div className="relative flex flex-col items-center justify-center h-dvh w-full px-6 overflow-hidden">
           {/* Background video */}
+          <Background ref={videoRef} />
 
-          <video
-            ref={videoRef}
-            className="absolute top-0 left-0 w-full h-full object-cover opacity-35"
-            autoPlay
-            poster="/fallback-image.jpg"
-            loop
-            muted
-            playsInline
-          >
-            <source src="/bg3.mp4" type="video/mp4" />
-          </video>
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -136,10 +132,12 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
         </div>
         {/* stage 2 photos */}
 
-        <div className="flex flex-col justify-around items-center w-full h-[140vh]">
+        <div className="flex flex-col justify-around items-center w-full min-h-screen">
           <div className="flex flex-row p-20 items-center justify-center w-full h-full inset-0">
-            <div className="flex flex-col w-[24%] h-245 p-1 gap-2
-                            max-xl:w-[50%] max-xl:h-275 max-lg:p-3">
+            <div
+              className="flex flex-col w-[24%] h-245 p-1 gap-2
+                            max-xl:w-[50%] max-xl:h-275 max-lg:p-3"
+            >
               {images.slice(0, 3).map((img) => (
                 <CardImage
                   key={img.id}
@@ -151,8 +149,10 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
               ))}
             </div>
 
-            <div className="flex flex-col w-[31%] h-275 p-3 gap-2
-                            max-xl:hidden">
+            <div
+              className="flex flex-col w-[31%] h-275 p-3 gap-2
+                            max-xl:hidden"
+            >
               {images.slice(3, 6).map((img) => (
                 <CardImage
                   key={img.id}
@@ -162,8 +162,10 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
               ))}
             </div>
 
-            <div className="flex flex-col w-[24%] h-245 p-1 gap-2
-                            max-xl:w-[50%] max-xl:h-275 max-lg:p-3">
+            <div
+              className="flex flex-col w-[24%] h-245 p-1 gap-2
+                            max-xl:w-[50%] max-xl:h-275 max-lg:p-3"
+            >
               {images.slice(6, 9).map((img) => (
                 <CardImage
                   key={img.id}
@@ -193,13 +195,17 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
         </div>
 
         {/* stage 3 about me + recent works */}
-        <div className="w-full h-screen">
-          <div className="flex w-[90%] h-[80%] items-center justify-center mx-auto gap-40">
-            <div className="flex flex-col w-[45%] justify-center text-start">
+        <div className="flex flex-col w-full min-h-screen justify-center py-10">
+          <div
+            className="flex w-[70%] items-center justify-around mx-auto gap-5 
+                    max-xl:flex-col"
+          >
+            <div
+              className="flex flex-col w-[50%] justify-center text-start
+                      max-xl:w-[70%]"
+            >
               <h1 className="text-7xl font-light text-white">Meet Vlada</h1>
-              <p className="mt-5 text-lg text-gray-100/75">
-                {about_me_text}
-              </p>
+              <p className="mt-5 text-lg text-gray-100/75">{about_me_text}</p>
               <hr className="w-full h-px border-gray-400/10 rounded-full mt-4 mb-4" />
               <div className="flex flex-wrap gap-4">
                 {skills.map((skill, index) => (
@@ -212,17 +218,23 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
                 ))}
               </div>
               <hr className="w-full h-px border-gray-400/10 rounded-full mt-4 mb-4" />
-              <div className="flex min-w-full flex-col items-start text-xl gap-8">
-                <div className="flex w-full justify-between flex-row gap-2">
-                  <p className="text-gray-100/65">Tattoo Artist</p>
-                  <p className="text-gray-100/65">Tatooruffka</p>
-                  <p className="text-gray-100/65">2025 - Currently</p>
-                </div>
+              <div className="flex w-full flex-col items-start text-sm md:text-base lg:text-xl gap-4">
+                {workflow.map((wf, index) => (
+                  <div
+                    key={index}
+                    className="flex w-full flex-row items-center"
+                  >
+                    <p className="w-1/3 text-left text-gray-100/65">{wf[0]}</p>
+                    <p className="w-1/3 text-left text-gray-100/65">{wf[1]}</p>
+                    <p className="w-1/3 text-right text-gray-100/65">{wf[2]}</p>
+                  </div>
+                ))}
               </div>
-              <hr className="w-full h-px border-gray-400/10 rounded-full mt-4 mb-4" />
-              
             </div>
-            <div className="flex w-[25%] items-center justify-center">
+            <div
+              className="flex w-[35%] items-center justify-center
+                      max-xl:w-[55%] max-xl:mt-10"
+            >
               <img
                 src={"./main_img/photo_5355173969113325595_x.jpg"}
                 alt="Profile"
@@ -230,7 +242,21 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
               />
             </div>
           </div>
+
+          <div className="flex w-[66%] mx-auto mt-12 justify-start max-xl:w-[70%] max-xl:justify-center">
+            <button className="flex items-center justify-center gap-2 hover:opacity-75 transition-opacity cursor-pointer">
+              <p className="text-xl text-gray-200/75">Recent works</p>
+              <img
+                width={24}
+                height={24}
+                src={"./icons/swap-to-works.svg"}
+                alt="Works"
+              />
+            </button>
+          </div>
         </div>
+
+        {/* stage 3.5 catalog of works */}
 
         {/* stage 4 process */}
         <div></div>
