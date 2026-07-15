@@ -6,8 +6,6 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CardImage from "../card_img/card";
 
-
-
 interface GalleryImage {
   id: number;
   imageUrl: string;
@@ -122,13 +120,13 @@ export default function CyclingGallery({ images }: CyclingGalleryProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImages((prev) => getNextImages(prev, imagesRef.current));
-    }, 2500);
+    }, 3200);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className={"relative w-full overflow-hidden mt-10"}>
+    <div className={"relative w-full overflow-hidden"}>
       {/* 5 columns side-by-side with responsive spacing */}
       <div className="grid grid-cols-5 gap-2 sm:gap-4 md:gap-5 w-[90%] m-auto">
         <AnimatePresence mode="popLayout" initial={false}>

@@ -250,8 +250,8 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
             </div>
           </div>
 
-          <div className="flex w-[66%] mx-auto mt-12 justify-start max-xl:w-[70%] max-xl:justify-center">
-            <button className="flex items-center justify-center gap-2 hover:opacity-75 transition-opacity cursor-pointer">
+          <div className="flex flex-col w-full gap-20 mx-auto mt-14 justify-start items-start max-xl:w-[70%] max-xl:justify-center">
+            <button className="flex w-[40%] max-xl:w-full items-center justify-center gap-2 hover:opacity-75 transition-opacity cursor-pointer">
               <p className="text-xl text-gray-200/75">Recent works</p>
               <img
                 width={24}
@@ -260,12 +260,9 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
                 alt="Works"
               />
             </button>
+            <VelocityCarousel images={images} />
           </div>
-          <VelocityCarousel images={images} />
         </div>
-
-        {/* stage 3.5 catalog of works */}
-        
 
         {/* stage 4 process */}
         <div></div>
