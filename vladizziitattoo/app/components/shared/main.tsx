@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { cn } from "@/lib/utils";
@@ -6,9 +5,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import CardImage from "../card_img/card";
+
 import { Image_Modal } from "../modal/image_modal";
 import Background from "../ui/background";
+import VelocityCarousel from "../ui/carouselCard";
+import CardImage from "../card_img/card";
 
 interface Props {
   className?: string;
@@ -31,7 +32,7 @@ const skills = [
 ];
 
 const workflow = [
-  ["Tattoo Artist", "Tatooruffka", "Currently"],
+  ["Tattoo Artist", "Tatooruffka Studio", "Currently"],
   ["Cover-ups", "Reworking old tattoos", "On Request"],
   ["Flash Designs", "Ready-to-ink Concepts", "Available"],
 ];
@@ -62,7 +63,7 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  console.log("image in main:", images);
+
   return (
     <main
       className={cn(
@@ -84,7 +85,7 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
             className="relative z-10 flex flex-col self-center items-center gap-5 text-center max-w-3xl w-full"
           >
             {/* Badge */}
-            <div className="inline-flex items-center gap-3 rounded-full px-5 py-4 bg-gradient-to-r from-neutral-900 to-black text-white border border-white/20">
+            <div className="inline-flex items-center gap-3 rounded-full px-5 py-4 bg-linear-to-r from-neutral-900 to-black text-white border border-white/20">
               <div className="w-2 h-2 rounded-full bg-white animate-glow" />
               <p className="max-sm:text-sm max-md:text-lg max-lg:text-xl max-xl:text-2xl font-light tracking-wide">
                 Vladizzii Tattoo: Your new look.
@@ -147,6 +148,7 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
                   }}
                 />
               ))}
+              {/*make a collage photo gallery, 1-photo=every filter, every type of the same photo */}
             </div>
 
             <div
@@ -218,15 +220,20 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
                 ))}
               </div>
               <hr className="w-full h-px border-gray-400/10 rounded-full mt-4 mb-4" />
-              <div className="flex w-full flex-col items-start text-sm md:text-base lg:text-xl gap-4">
+              <div className="flex w-full flex-col items-start text-sm md:text-base lg:text-xl gap-4 text-gray-100/65">
                 {workflow.map((wf, index) => (
                   <div
                     key={index}
                     className="flex w-full flex-row items-center"
                   >
-                    <p className="w-1/3 text-left text-gray-100/65">{wf[0]}</p>
-                    <p className="w-1/3 text-left text-gray-100/65">{wf[1]}</p>
-                    <p className="w-1/3 text-right text-gray-100/65">{wf[2]}</p>
+                    {wf.map((text, i) => (
+                      <p
+                        key={i}
+                        className={`w-1/3 ${i === 2 ? "text-right" : "text-left"}`}
+                      >
+                        {text}
+                      </p>
+                    ))}
                   </div>
                 ))}
               </div>
@@ -254,9 +261,11 @@ export const Main: React.FC<Props> = ({ className, images = [] }) => {
               />
             </button>
           </div>
+          <VelocityCarousel images={images} />
         </div>
 
         {/* stage 3.5 catalog of works */}
+        
 
         {/* stage 4 process */}
         <div></div>

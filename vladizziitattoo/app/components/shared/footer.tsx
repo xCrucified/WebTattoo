@@ -89,7 +89,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
             className="
               inline-flex items-center gap-4
               rounded-full border-l border-white/30
-              bg-gradient-to-r from-neutral-900 to-black
+              bg-linear-to-r from-neutral-900 to-black
               px-6 py-5 text-white
             "
           >
